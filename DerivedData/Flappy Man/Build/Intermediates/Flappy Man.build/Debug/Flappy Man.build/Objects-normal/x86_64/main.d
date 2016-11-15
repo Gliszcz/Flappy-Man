@@ -47,4 +47,5 @@ dependencies: /Users/Gliszcz/GitHub/Flappy-Man/test/main.cpp \
   /usr/local/include/allegro5/allegro_native_dialog.h \
   /usr/local/include/allegro5/allegro_primitives.h \
   /usr/local/include/allegro5/allegro_image.h \
-  /Users/Gliszcz/GitHub/Flappy-Man/test/game.hpp
+  /Users/Gliszcz/GitHub/Flappy-Man/test/game.hpp \
+  /Users/Gliszcz/GitHub/Flappy-Man/test/game_object.h

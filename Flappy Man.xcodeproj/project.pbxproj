@@ -58,6 +58,7 @@
 		9DD05BB91DDB5F1600D42B7F /* libjpeg.8.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libjpeg.8.dylib; path = ../../../../../usr/local/Cellar/jpeg/8d/lib/libjpeg.8.dylib; sourceTree = "<group>"; };
 		9DD05BBC1DDB6C2800D42B7F /* game.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game.cpp; sourceTree = "<group>"; };
 		9DD05BBD1DDB6C2800D42B7F /* game.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = game.hpp; sourceTree = "<group>"; };
+		9DD05BC01DDB81CF00D42B7F /* game_object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = game_object.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,8 +66,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9DD05BBA1DDB5F1600D42B7F /* libjpeg.8.dylib in Frameworks */,
 				9DD05BB81DDB5E9600D42B7F /* libpng16.16.dylib in Frameworks */,
+				9DD05BBA1DDB5F1600D42B7F /* libjpeg.8.dylib in Frameworks */,
 				9D5160441DDA0BB2003221F0 /* liballegro_main.5.2.1.dylib in Frameworks */,
 				9D51604A1DDA0BB2003221F0 /* liballegro.5.2.1.dylib in Frameworks */,
 				9D51603E1DDA0BB2003221F0 /* liballegro_acodec.5.2.1.dylib in Frameworks */,
@@ -109,6 +110,7 @@
 				9D5160291DDA0520003221F0 /* main.cpp */,
 				9DD05BBC1DDB6C2800D42B7F /* game.cpp */,
 				9DD05BBD1DDB6C2800D42B7F /* game.hpp */,
+				9DD05BC01DDB81CF00D42B7F /* game_object.h */,
 			);
 			name = "Flappy Man";
 			path = test;

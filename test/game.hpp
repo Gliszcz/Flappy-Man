@@ -14,6 +14,8 @@
 #include <allegro5/allegro_native_dialog.h>
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_image.h>
+#include "game_object.h"
+
 struct Game
 {
     bool running = true;
@@ -37,6 +39,7 @@ struct Game
     void Load_Files()                           // LOAD FILES
     {
         background = al_load_bitmap("background.jpg");
+        ground = al_load_bitmap("ground.jpg");
     }
     void Allegro_Begin_Func()                   // ALLEGRO BEGINNING FUNC
     {
@@ -67,14 +70,18 @@ struct Game
     }
     void Update()
     {
+        int akt_ground_x;
         if (ev.type == ALLEGRO_EVENT_DISPLAY_CLOSE)
             running = false;
+        
+        
     }
     void Draw()
     {
         if (ev.type == ALLEGRO_EVENT_TIMER)
         {
             al_draw_bitmap(background, 0, 0, 0);
+            al_draw_bitmap(ground, 0, 1030, 0);
         }
         al_flip_display();
         
