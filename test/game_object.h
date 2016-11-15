@@ -30,12 +30,10 @@ struct Game_Object
         y=b;
         image = img;
     }
-
 };
 
 struct Ground : Game_Object
 {
-    
     void Draw_Object()
     {
         al_draw_bitmap(image, x, y, 0);
@@ -58,7 +56,6 @@ struct Ground : Game_Object
 };
 struct Background : Game_Object
 {
-    
     void Draw_Object()
     {
         al_draw_bitmap(image, x, y, 0);

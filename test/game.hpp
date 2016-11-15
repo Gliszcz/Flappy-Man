@@ -31,18 +31,19 @@ struct Game
     ALLEGRO_BITMAP *ground = NULL;
     ALLEGRO_EVENT ev;
 
-    
     void Init()                                 // INIT
     {
         al_init();
         al_install_keyboard();
         al_init_image_addon();
     }
+    
     void Load_Files()                           // LOAD FILES
     {
         background = al_load_bitmap("background.jpg");
         ground = al_load_bitmap("ground.jpg");
     }
+    
     void Allegro_Begin_Func()                   // ALLEGRO BEGINNING FUNC
     {
         timer = al_create_timer(1.0 / FPS);
@@ -55,6 +56,7 @@ struct Game
         Objects.push_back(new Background(background, 0, 0));
         Objects.push_back(new Ground(ground, 0, 1030));
     }
+    
     void Start()                                // START
     {
         while (running)
@@ -64,16 +66,19 @@ struct Game
             Draw();
         }
     }
+    
     void CleanUp()
     {
         al_destroy_display(window);
         for(int i=0; i<Objects.size(); i++)
             delete Objects[i];
     }
+    
     void GetInput()
     {
         al_wait_for_event(event_queue, &ev);
     }
+    
     void Update()
     {
         if (ev.type == ALLEGRO_EVENT_DISPLAY_CLOSE)
@@ -81,6 +86,7 @@ struct Game
         for(int i=0; i<Objects.size(); i++)
             Objects[i]-> Update_Object();
     }
+    
     void Draw()
     {
         if (ev.type == ALLEGRO_EVENT_TIMER)
@@ -89,8 +95,6 @@ struct Game
                 Objects[i]-> Draw_Object();
         }
         al_flip_display();
-        
     }
-    
 };
 #endif /* game_hpp */
