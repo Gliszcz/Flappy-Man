@@ -76,6 +76,9 @@ struct Game
     {
         if (ev.type == ALLEGRO_EVENT_DISPLAY_CLOSE)
             running = false;
+        for(int i=0; i<Objects.size(); i++)
+            Objects[i].Update_Object();
+
     }
     void Draw()
     {
