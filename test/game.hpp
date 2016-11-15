@@ -25,6 +25,8 @@ struct Game
     ALLEGRO_TIMER *timer = NULL;
     ALLEGRO_BITMAP *background = NULL;
     ALLEGRO_BITMAP *ground = NULL;
+    ALLEGRO_EVENT ev;
+
     
     void Init()                                 // INIT
     {
@@ -50,23 +52,32 @@ struct Game
     {
         while (running)
         {
-            ALLEGRO_EVENT ev;
-            al_wait_for_event(event_queue, &ev);
-            if (ev.type == ALLEGRO_EVENT_DISPLAY_CLOSE)
-                running = false;
-            
-            else if (ev.type == ALLEGRO_EVENT_TIMER)
-            {
-                al_draw_bitmap(background, 0, 0, 0);
-            }
-            al_flip_display();
-            
+            GetInput();
+            Update();
+            Draw();
         }
     }
     void CleanUp()
     {
         al_destroy_display(window);
-
+    }
+    void GetInput()
+    {
+        al_wait_for_event(event_queue, &ev);
+    }
+    void Update()
+    {
+        if (ev.type == ALLEGRO_EVENT_DISPLAY_CLOSE)
+            running = false;
+    }
+    void Draw()
+    {
+        if (ev.type == ALLEGRO_EVENT_TIMER)
+        {
+            al_draw_bitmap(background, 0, 0, 0);
+        }
+        al_flip_display();
+        
     }
     
 };
