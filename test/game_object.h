@@ -13,13 +13,23 @@ struct Game_Object
     ALLEGRO_BITMAP *image;
     float x;
     float y;
+    
     void Draw_Object()
     {
         al_draw_bitmap(image, x, y, 0);
     }
+    
     void Update_Object()
     {
     }
+    
+    Game_Object(ALLEGRO_BITMAP* img, int a, int b)
+    {
+        x=a;
+        y=b;
+        image = img;
+    }
+
 };
 
 struct Ground : Game_Object
@@ -30,9 +40,17 @@ struct Ground : Game_Object
         al_draw_bitmap(image, x, y, 0);
         al_draw_bitmap(image, x+al_get_bitmap_width(image), y, 0);
     }
+    
     void Update_Object()
     {
         x-=0.5;
+    }
+    
+    Ground(ALLEGRO_BITMAP* img, int a, int b) : Game_Object(img,a,b)
+    {
+        x=a;
+        y=b;
+        image = img;
     }
 };
 #endif /* game_object_h */

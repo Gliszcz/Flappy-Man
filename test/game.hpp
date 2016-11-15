@@ -53,7 +53,7 @@ struct Game
         al_register_event_source(event_queue, al_get_display_event_source(window));
         al_start_timer(timer);
         Objects.push_back(Game_Object{background, 0, 0});
-        Objects.push_back(Game_Object{ground, 0, 1030});
+        Objects.push_back(Game_Object(Ground, 0, 1030));
     }
     void Start()                                // START
     {
