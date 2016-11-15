@@ -13,5 +13,9 @@ struct Game_Object
     ALLEGRO_BITMAP *image;
     float x;
     float y;
+    void Draw_Object()
+    {
+        al_draw_bitmap(image, x, y, 0);
+    }
 };
 #endif /* game_object_h */

@@ -15,13 +15,15 @@
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_image.h>
 #include "game_object.h"
-
+#include <vector>
+using namespace std;
 struct Game
 {
     bool running = true;
     int FPS = 60;
     const int window_hight = 1080;
     const int window_width = 1920;
+    vector <Game_Object> Objects;
     ALLEGRO_DISPLAY *window = NULL;
     ALLEGRO_EVENT_QUEUE *event_queue = NULL;
     ALLEGRO_TIMER *timer = NULL;
@@ -50,6 +52,8 @@ struct Game
         al_register_event_source(event_queue, al_get_timer_event_source(timer));
         al_register_event_source(event_queue, al_get_display_event_source(window));
         al_start_timer(timer);
+        Objects.push_back(Game_Object{background, 0, 0});
+        Objects.push_back(Game_Object{ground, 0, 1030});
     }
     void Start()                                // START
     {
@@ -70,18 +74,15 @@ struct Game
     }
     void Update()
     {
-        int akt_ground_x;
         if (ev.type == ALLEGRO_EVENT_DISPLAY_CLOSE)
             running = false;
-        
-        
     }
     void Draw()
     {
         if (ev.type == ALLEGRO_EVENT_TIMER)
         {
-            al_draw_bitmap(background, 0, 0, 0);
-            al_draw_bitmap(ground, 0, 1030, 0);
+            for(int i=0; i<Objects.size(); i++)
+                Objects[i].Draw_Object();
         }
         al_flip_display();
         
