@@ -25,5 +25,17 @@ struct Game
     ALLEGRO_TIMER *timer = NULL;
     ALLEGRO_BITMAP *background = NULL;
     ALLEGRO_BITMAP *ground = NULL;
+    
+    void init()                                 // INIT
+    {
+        al_init();
+        al_install_keyboard();
+        al_init_image_addon();
+    }
+    void load_files()                           // LOAD FILES
+    {
+        
+    }
+    
 };
 #endif /* game_hpp */

@@ -1,6 +1,5 @@
-dependencies: \
-  /Users/Gliszcz/Desktop/Projekt\ FLAPPY\ MAN/Flappy\ Man\ Code/test/game.cpp \
-  /Users/Gliszcz/Desktop/Projekt\ FLAPPY\ MAN/Flappy\ Man\ Code/test/game.hpp \
+dependencies: /Users/Gliszcz/GitHub/Flappy-Man/test/game.cpp \
+  /Users/Gliszcz/GitHub/Flappy-Man/test/game.hpp \
   /usr/local/include/allegro5/allegro.h \
   /usr/local/include/allegro5/base.h \
   /usr/local/include/allegro5/internal/alconfig.h \

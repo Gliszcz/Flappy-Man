@@ -8,13 +8,8 @@ int main(int argc, char **argv)
 {
     
     Game game;
-    al_init();
-    al_install_keyboard();
-    al_init_image_addon();
-    
+    game.init();
     game.background = al_load_bitmap("background.jpg");
-    //ground = al_load_bitmap("ground.png");
-
     game.timer = al_create_timer(1.0 / game.FPS);
     game.window = al_create_display(game.window_width, game.window_hight);
     game.event_queue = al_create_event_queue();
