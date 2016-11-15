@@ -23,7 +23,7 @@ struct Game
     int FPS = 60;
     const int window_hight = 1080;
     const int window_width = 1920;
-    vector <Game_Object> Objects;
+    vector <Game_Object*> Objects;
     ALLEGRO_DISPLAY *window = NULL;
     ALLEGRO_EVENT_QUEUE *event_queue = NULL;
     ALLEGRO_TIMER *timer = NULL;
@@ -52,8 +52,8 @@ struct Game
         al_register_event_source(event_queue, al_get_timer_event_source(timer));
         al_register_event_source(event_queue, al_get_display_event_source(window));
         al_start_timer(timer);
-        Objects.push_back(Game_Object{background, 0, 0});
-        Objects.push_back(Game_Object(Ground, 0, 1030));
+        Objects.push_back(new Background(background, 0, 0));
+        Objects.push_back(new Ground(ground, 0, 1030));
     }
     void Start()                                // START
     {
@@ -67,6 +67,8 @@ struct Game
     void CleanUp()
     {
         al_destroy_display(window);
+        for(int i=0; i<Objects.size(); i++)
+            delete Objects[i];
     }
     void GetInput()
     {
@@ -77,15 +79,14 @@ struct Game
         if (ev.type == ALLEGRO_EVENT_DISPLAY_CLOSE)
             running = false;
         for(int i=0; i<Objects.size(); i++)
-            Objects[i].Update_Object();
-
+            Objects[i]-> Update_Object();
     }
     void Draw()
     {
         if (ev.type == ALLEGRO_EVENT_TIMER)
         {
             for(int i=0; i<Objects.size(); i++)
-                Objects[i].Draw_Object();
+                Objects[i]-> Draw_Object();
         }
         al_flip_display();
         
