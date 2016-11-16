@@ -76,5 +76,24 @@ struct Background : Game_Object
         image = img;
     }
 };
+struct Superman : Game_Object
+{
+    void Draw_Object()
+    {
+        al_draw_bitmap(image, x, y, 0);
+    }
+    
+    void Update_Object()
+    {
+    }
+    
+    Superman(ALLEGRO_BITMAP* img, int a, int b) : Game_Object(img,a,b)
+    {
+        x=a;
+        y=b;
+        image = img;
+    }
+};
+
 
 #endif /* game_object_h */

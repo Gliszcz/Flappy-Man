@@ -23,7 +23,6 @@
 		9D51604A1DDA0BB2003221F0 /* liballegro.5.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D51603D1DDA0BB2003221F0 /* liballegro.5.2.1.dylib */; };
 		9DD05BB81DDB5E9600D42B7F /* libpng16.16.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD05BB71DDB5E9600D42B7F /* libpng16.16.dylib */; };
 		9DD05BBA1DDB5F1600D42B7F /* libjpeg.8.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD05BB91DDB5F1600D42B7F /* libjpeg.8.dylib */; };
-		9DD05BBE1DDB6C2800D42B7F /* game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DD05BBC1DDB6C2800D42B7F /* game.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -56,7 +55,6 @@
 		9D51603D1DDA0BB2003221F0 /* liballegro.5.2.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liballegro.5.2.1.dylib; path = ../../../../usr/local/Cellar/allegro/5.2.1.1_1/lib/liballegro.5.2.1.dylib; sourceTree = "<group>"; };
 		9DD05BB71DDB5E9600D42B7F /* libpng16.16.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpng16.16.dylib; path = ../../../../../usr/local/Cellar/libpng/1.6.26/lib/libpng16.16.dylib; sourceTree = "<group>"; };
 		9DD05BB91DDB5F1600D42B7F /* libjpeg.8.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libjpeg.8.dylib; path = ../../../../../usr/local/Cellar/jpeg/8d/lib/libjpeg.8.dylib; sourceTree = "<group>"; };
-		9DD05BBC1DDB6C2800D42B7F /* game.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game.cpp; sourceTree = "<group>"; };
 		9DD05BBD1DDB6C2800D42B7F /* game.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = game.hpp; sourceTree = "<group>"; };
 		9DD05BC01DDB81CF00D42B7F /* game_object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = game_object.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -108,7 +106,6 @@
 			isa = PBXGroup;
 			children = (
 				9D5160291DDA0520003221F0 /* main.cpp */,
-				9DD05BBC1DDB6C2800D42B7F /* game.cpp */,
 				9DD05BBD1DDB6C2800D42B7F /* game.hpp */,
 				9DD05BC01DDB81CF00D42B7F /* game_object.h */,
 			);
@@ -196,7 +193,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D51602A1DDA0520003221F0 /* main.cpp in Sources */,
-				9DD05BBE1DDB6C2800D42B7F /* game.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

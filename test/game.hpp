@@ -21,14 +21,15 @@ struct Game
 {
     bool running = true;
     int FPS = 60;
-    const int window_hight = 1080;
     const int window_width = 1920;
+    const int window_hight = 1080;
     vector <Game_Object*> Objects;
     ALLEGRO_DISPLAY *window = NULL;
     ALLEGRO_EVENT_QUEUE *event_queue = NULL;
     ALLEGRO_TIMER *timer = NULL;
     ALLEGRO_BITMAP *background = NULL;
     ALLEGRO_BITMAP *ground = NULL;
+    ALLEGRO_BITMAP *superman = NULL;
     ALLEGRO_EVENT ev;
 
     void Init()                                 // INIT
@@ -42,6 +43,8 @@ struct Game
     {
         background = al_load_bitmap("background.jpg");
         ground = al_load_bitmap("ground.jpg");
+        superman = al_load_bitmap("superman.png");
+        
     }
     
     void Allegro_Begin_Func()                   // ALLEGRO BEGINNING FUNC
@@ -55,6 +58,7 @@ struct Game
         al_start_timer(timer);
         Objects.push_back(new Background(background, 0, 0));
         Objects.push_back(new Ground(ground, 0, 1030));
+        Objects.push_back(new Superman(superman,400,460));
     }
     
     void Start()                                // START
