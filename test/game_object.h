@@ -42,7 +42,7 @@ struct Ground : Game_Object
     
     void Update_Object()
     {
-        x-=2;
+        x-=2.5;
         if(x<-al_get_bitmap_width(image))
             x=0;
     }
@@ -76,6 +76,7 @@ struct Background : Game_Object
         image = img;
     }
 };
+
 struct Superman : Game_Object
 {
     void Draw_Object()
@@ -85,6 +86,7 @@ struct Superman : Game_Object
     
     void Update_Object()
     {
+        
     }
     
     Superman(ALLEGRO_BITMAP* img, int a, int b) : Game_Object(img,a,b)
@@ -95,5 +97,42 @@ struct Superman : Game_Object
     }
 };
 
+struct Obstacle_Up : Game_Object
+{
+    void Draw_Object()
+    {
+        al_draw_bitmap(image, x, y, 0);
+    }
+    
+    void Update_Object()
+    {
+        x-=2.5;
+
+    }
+    Obstacle_Up(ALLEGRO_BITMAP* img, int a, int b) : Game_Object(img,a,b)
+    {
+        x=a;
+        y=b;
+        image = img;
+    }
+};
+struct Obstacle_Down : Game_Object
+{
+    void Draw_Object()
+    {
+        al_draw_bitmap(image, x, y, 0);
+    }
+ 
+    void Update_Object()
+    {
+        x-=2.5;
+    }
+    Obstacle_Down(ALLEGRO_BITMAP* img, int a, int b) : Game_Object(img,a,b)
+    {
+        x=a;
+        y=b;
+        image = img;
+    }
+ };
 
 #endif /* game_object_h */

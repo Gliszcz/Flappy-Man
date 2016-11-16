@@ -30,6 +30,8 @@ struct Game
     ALLEGRO_BITMAP *background = NULL;
     ALLEGRO_BITMAP *ground = NULL;
     ALLEGRO_BITMAP *superman = NULL;
+    ALLEGRO_BITMAP *obstacle_up = NULL;
+    ALLEGRO_BITMAP *obstacle_down = NULL;
     ALLEGRO_EVENT ev;
 
     void Init()                                 // INIT
@@ -44,6 +46,8 @@ struct Game
         background = al_load_bitmap("background.jpg");
         ground = al_load_bitmap("ground.jpg");
         superman = al_load_bitmap("superman.png");
+        obstacle_up = al_load_bitmap("obstacle_up.png");
+        obstacle_down = al_load_bitmap("obstacle_down.png");
         
     }
     
@@ -59,6 +63,9 @@ struct Game
         Objects.push_back(new Background(background, 0, 0));
         Objects.push_back(new Ground(ground, 0, 1030));
         Objects.push_back(new Superman(superman,400,460));
+        Objects.push_back(new Obstacle_Up(obstacle_up,1920,-800));
+        Objects.push_back(new Obstacle_Down(obstacle_down,1920,440));
+
     }
     
     void Start()                                // START
