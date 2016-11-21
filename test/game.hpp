@@ -65,7 +65,6 @@ struct Game
         Objects.push_back(new Superman(superman,400,460));
         Objects.push_back(new Obstacle_Up(obstacle_up,1920,-800));
         Objects.push_back(new Obstacle_Down(obstacle_down,1920,440));
-
     }
     
     void Start()                                // START

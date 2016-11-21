@@ -8,6 +8,10 @@
 
 #ifndef game_object_h
 #define game_object_h
+#include <allegro5/allegro.h>
+#include <allegro5/allegro_native_dialog.h>
+#include <allegro5/allegro_primitives.h>
+#include <allegro5/allegro_image.h>
 
 struct Game_Object
 {
@@ -54,6 +58,7 @@ struct Ground : Game_Object
         image = img;
     }
 };
+
 struct Background : Game_Object
 {
     void Draw_Object()
@@ -86,7 +91,6 @@ struct Superman : Game_Object
     
     void Update_Object()
     {
-        
     }
     
     Superman(ALLEGRO_BITMAP* img, int a, int b) : Game_Object(img,a,b)
@@ -102,6 +106,9 @@ struct Obstacle_Up : Game_Object
     void Draw_Object()
     {
         al_draw_bitmap(image, x, y, 0);
+        al_draw_bitmap(image, x+350, y, 0);
+        al_draw_bitmap(image, x+700, y, 0);
+        al_draw_bitmap(image, x+1050, y, 0);
     }
     
     void Update_Object()
@@ -116,11 +123,15 @@ struct Obstacle_Up : Game_Object
         image = img;
     }
 };
+
 struct Obstacle_Down : Game_Object
 {
     void Draw_Object()
     {
         al_draw_bitmap(image, x, y, 0);
+        al_draw_bitmap(image, x+350, y, 0);
+        al_draw_bitmap(image, x+700, y, 0);
+        al_draw_bitmap(image, x+1050, y, 0);
     }
  
     void Update_Object()
