@@ -60,11 +60,11 @@ struct Game
         al_register_event_source(event_queue, al_get_timer_event_source(timer));
         al_register_event_source(event_queue, al_get_display_event_source(window));
         al_start_timer(timer);
-        Objects.push_back(new Background(background, 0, 0,&ev));
-        Objects.push_back(new Ground(ground, 0, 1030,&ev));
-        Objects.push_back(new Superman(superman,400,460, &ev));
-        Objects.push_back(new Obstacle_Up(obstacle_up,1920,-800,&ev));
-        Objects.push_back(new Obstacle_Down(obstacle_down,1920,440,&ev));
+        Objects.push_back(new Background(background, 0, 0, &ev));
+        Objects.push_back(new Ground(ground, 0, 1030, &ev));
+        Objects.push_back(new Superman(superman, 400, 460, &ev));
+        Objects.push_back(new Obstacle_Up(obstacle_up, 1920, -800, &ev));
+        Objects.push_back(new Obstacle_Down(obstacle_down, 1920, 440, &ev));
     }
     
     void Start()                                // START
