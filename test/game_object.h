@@ -18,7 +18,7 @@ struct Game_Object
     ALLEGRO_BITMAP *image;
     float x;
     float y;
-    
+    ALLEGRO_EVENT *event;
     virtual void Draw_Object()
     {
         al_draw_bitmap(image, x, y, 0);
@@ -28,11 +28,12 @@ struct Game_Object
     {
     }
     
-    Game_Object(ALLEGRO_BITMAP* img, int a, int b)
+    Game_Object(ALLEGRO_BITMAP* img, int a, int b, ALLEGRO_EVENT* ev)
     {
         x=a;
         y=b;
         image = img;
+        event = ev;
     }
 };
 
@@ -51,11 +52,12 @@ struct Ground : Game_Object
             x=0;
     }
     
-    Ground(ALLEGRO_BITMAP* img, int a, int b) : Game_Object(img,a,b)
+    Ground(ALLEGRO_BITMAP* img, int a, int b, ALLEGRO_EVENT* ev) : Game_Object(img,a,b,ev)
     {
         x=a;
         y=b;
         image = img;
+        event = ev;
     }
 };
 
@@ -74,11 +76,12 @@ struct Background : Game_Object
             x=0;
     }
     
-    Background(ALLEGRO_BITMAP* img, int a, int b) : Game_Object(img,a,b)
+    Background(ALLEGRO_BITMAP* img, int a, int b, ALLEGRO_EVENT* ev) : Game_Object(img,a,b,ev)
     {
         x=a;
         y=b;
         image = img;
+        event = ev;
     }
 };
 
@@ -91,13 +94,18 @@ struct Superman : Game_Object
     
     void Update_Object()
     {
+        if(event->type == ALLEGRO_KEY_DOWN)
+            switch(event->keyboard.keycode)
+            case ALLEGRO_KEY_SPACE:
+                y++;
     }
     
-    Superman(ALLEGRO_BITMAP* img, int a, int b) : Game_Object(img,a,b)
+    Superman(ALLEGRO_BITMAP* img, int a, int b, ALLEGRO_EVENT* ev) : Game_Object(img,a,b,ev)
     {
         x=a;
         y=b;
         image = img;
+        event = ev;
     }
 };
 
@@ -116,11 +124,12 @@ struct Obstacle_Up : Game_Object
         x-=2.5;
 
     }
-    Obstacle_Up(ALLEGRO_BITMAP* img, int a, int b) : Game_Object(img,a,b)
+    Obstacle_Up(ALLEGRO_BITMAP* img, int a, int b, ALLEGRO_EVENT* ev) : Game_Object(img,a,b,ev)
     {
         x=a;
         y=b;
         image = img;
+        event = ev;
     }
 };
 
@@ -138,11 +147,12 @@ struct Obstacle_Down : Game_Object
     {
         x-=2.5;
     }
-    Obstacle_Down(ALLEGRO_BITMAP* img, int a, int b) : Game_Object(img,a,b)
+    Obstacle_Down(ALLEGRO_BITMAP* img, int a, int b, ALLEGRO_EVENT* ev) : Game_Object(img,a,b,ev)
     {
         x=a;
         y=b;
         image = img;
+        event = ev;
     }
  };
 
