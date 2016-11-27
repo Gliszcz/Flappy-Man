@@ -8,27 +8,28 @@
 
 #ifndef game_object_h
 #define game_object_h
+#include <iostream>
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_native_dialog.h>
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_image.h>
-
+using namespace std;
 struct Game_Object
 {
     ALLEGRO_BITMAP *image;
     float x;
     float y;
-    ALLEGRO_EVENT **event;
+    ALLEGRO_EVENT *event;
     virtual void Draw_Object()
     {
         al_draw_bitmap(image, x, y, 0);
     }
     
-    virtual void Update_Object()
+    virtual void Update_Object(ALLEGRO_EVENT event)
     {
     }
     
-    Game_Object(ALLEGRO_BITMAP* img, int a, int b, ALLEGRO_EVENT** ev)
+    Game_Object(ALLEGRO_BITMAP* img, int a, int b, ALLEGRO_EVENT* ev)
     {
         x=a;
         y=b;
@@ -45,14 +46,14 @@ struct Ground : Game_Object
         al_draw_bitmap(image, x+al_get_bitmap_width(image), y, 0);
     }
     
-    void Update_Object()
+    void Update_Object(ALLEGRO_EVENT event)
     {
         x-=2.5;
         if(x<-al_get_bitmap_width(image))
             x=0;
     }
     
-    Ground(ALLEGRO_BITMAP* img, int a, int b, ALLEGRO_EVENT** ev) : Game_Object(img,a,b,ev)
+    Ground(ALLEGRO_BITMAP* img, int a, int b, ALLEGRO_EVENT* ev) : Game_Object(img,a,b,ev)
     {
         x=a;
         y=b;
@@ -69,14 +70,14 @@ struct Background : Game_Object
         al_draw_bitmap(image, x+al_get_bitmap_width(image), y, 0);
     }
     
-    void Update_Object()
+    void Update_Object(ALLEGRO_EVENT event)
     {
         x-=0.6;
         if(x<-al_get_bitmap_width(image))
             x=0;
     }
     
-    Background(ALLEGRO_BITMAP* img, int a, int b, ALLEGRO_EVENT** ev) : Game_Object(img,a,b,ev)
+    Background(ALLEGRO_BITMAP* img, int a, int b, ALLEGRO_EVENT* ev) : Game_Object(img,a,b,ev)
     {
         x=a;
         y=b;
@@ -92,15 +93,15 @@ struct Superman : Game_Object
         al_draw_bitmap(image, x, y, 0);
     }
     
-    void Update_Object()
+    void Update_Object(ALLEGRO_EVENT event)
     {
-        if(event.type == ALLEGRO_KEY_DOWN)
-            switch(*event.keyboard.keycode)
-            case ALLEGRO_KEY_UP:
-                y++;
+        if(event.type == ALLEGRO_EVENT_KEY_DOWN)
+            if(event.keyboard.keycode)
+                if(ALLEGRO_KEY_SPACE)
+                    x++;
     }
     
-    Superman(ALLEGRO_BITMAP* img, int a, int b, ALLEGRO_EVENT** ev) : Game_Object(img,a,b,ev)
+    Superman(ALLEGRO_BITMAP* img, int a, int b, ALLEGRO_EVENT* ev) : Game_Object(img,a,b,ev)
     {
         x=a;
         y=b;
@@ -119,12 +120,12 @@ struct Obstacle_Up : Game_Object
         al_draw_bitmap(image, x+1050, y, 0);
     }
     
-    void Update_Object()
+    void Update_Object(ALLEGRO_EVENT event)
     {
         x-=2.5;
 
     }
-    Obstacle_Up(ALLEGRO_BITMAP* img, int a, int b, ALLEGRO_EVENT** ev) : Game_Object(img,a,b,ev)
+    Obstacle_Up(ALLEGRO_BITMAP* img, int a, int b, ALLEGRO_EVENT* ev) : Game_Object(img,a,b,ev)
     {
         x=a;
         y=b;
@@ -143,11 +144,11 @@ struct Obstacle_Down : Game_Object
         al_draw_bitmap(image, x+1050, y, 0);
     }
  
-    void Update_Object()
+    void Update_Object(ALLEGRO_EVENT event)
     {
         x-=2.5;
     }
-    Obstacle_Down(ALLEGRO_BITMAP* img, int a, int b, ALLEGRO_EVENT** ev) : Game_Object(img,a,b,ev)
+    Obstacle_Down(ALLEGRO_BITMAP* img, int a, int b, ALLEGRO_EVENT* ev) : Game_Object(img,a,b,ev)
     {
         x=a;
         y=b;
