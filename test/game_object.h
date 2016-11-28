@@ -122,7 +122,7 @@ struct Obstacle_Up : Game_Object
     {
         x-=2.5;
         if(x<-al_get_bitmap_width(image))
-            x=2120;
+            x=2420;
     }
     Obstacle_Up(ALLEGRO_BITMAP* img, int a, int b, ALLEGRO_EVENT* ev) : Game_Object(img,a,b,ev)
     {
@@ -145,7 +145,7 @@ struct Obstacle_Down : Game_Object
     {
         x-=2.5;
         if(x<-al_get_bitmap_width(image))
-            x=2120;
+            x=2420;
 
     }
     Obstacle_Down(ALLEGRO_BITMAP* img, int a, int b, ALLEGRO_EVENT* ev) : Game_Object(img,a,b,ev)

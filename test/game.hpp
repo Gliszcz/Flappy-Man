@@ -22,7 +22,7 @@ struct Game
     bool running = true;
     bool running_game = true;
     int FPS = 60;
-    const int space_obstacle = 350;
+    const int space_obstacle = 500;
     const int window_width = 1920;
     const int window_hight = 1080;
     vector <Game_Object*> Objects;
@@ -67,10 +67,10 @@ struct Game
         Objects.push_back(new  Background(background, 0, 0, &ev));
         Objects.push_back(new Ground(ground, 0, 1030, &ev));
         Objects.push_back(new Superman(superman, 400, 460, &ev));
-        for(int i=0;i<=6*space_obstacle;i+=space_obstacle)
+        for(int i=0;i<=5*space_obstacle;i+=space_obstacle)
             Obstacle_up.push_back(new Obstacle_Up(obstacle_up, 1920+i, -800, &ev));
-        for(int i=0;i<=6*space_obstacle;i+=space_obstacle)
-            Obstacle_down.push_back(new Obstacle_Down(obstacle_down, 1920+i, 440, &ev));
+        for(int i=0;i<=5*space_obstacle;i+=space_obstacle)
+            Obstacle_down.push_back(new Obstacle_Down(obstacle_down, 1920+i, 460, &ev));
     
     }
     void Start()                                // START
