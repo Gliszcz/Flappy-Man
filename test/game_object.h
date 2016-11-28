@@ -13,6 +13,7 @@
 #include <allegro5/allegro_native_dialog.h>
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_image.h>
+
 using namespace std;
 struct Game_Object
 {
@@ -115,15 +116,13 @@ struct Obstacle_Up : Game_Object
     void Draw_Object()
     {
         al_draw_bitmap(image, x, y, 0);
-        al_draw_bitmap(image, x+350, y, 0);
-        al_draw_bitmap(image, x+700, y, 0);
-        al_draw_bitmap(image, x+1050, y, 0);
     }
     
     void Update_Object(ALLEGRO_EVENT event)
     {
         x-=2.5;
-
+        if(x<-al_get_bitmap_width(image))
+            x=2120;
     }
     Obstacle_Up(ALLEGRO_BITMAP* img, int a, int b, ALLEGRO_EVENT* ev) : Game_Object(img,a,b,ev)
     {
@@ -138,15 +137,16 @@ struct Obstacle_Down : Game_Object
 {
     void Draw_Object()
     {
-        al_draw_bitmap(image, x, y, 0);
-        al_draw_bitmap(image, x+350, y, 0);
-        al_draw_bitmap(image, x+700, y, 0);
-        al_draw_bitmap(image, x+1050, y, 0);
+
+            al_draw_bitmap(image, x, y, 0);
     }
  
     void Update_Object(ALLEGRO_EVENT event)
     {
         x-=2.5;
+        if(x<-al_get_bitmap_width(image))
+            x=2120;
+
     }
     Obstacle_Down(ALLEGRO_BITMAP* img, int a, int b, ALLEGRO_EVENT* ev) : Game_Object(img,a,b,ev)
     {
