@@ -98,8 +98,10 @@ struct Superman : Game_Object
     {
         if(event.type == ALLEGRO_EVENT_KEY_DOWN)
             switch(event.keyboard.keycode)
+            {
                 case ALLEGRO_KEY_SPACE:
                     y-=10;
+            }
     }
     
     Superman(ALLEGRO_BITMAP* img, int a, int b, ALLEGRO_EVENT* ev) : Game_Object(img,a,b,ev)
