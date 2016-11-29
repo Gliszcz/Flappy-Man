@@ -119,8 +119,9 @@ struct Game
                 Obstacle_up[i]->Draw_Object();
             for(int i=0;i<Obstacle_down.size();i++)
                 Obstacle_down[i]->Draw_Object();
-        }
         al_flip_display();
+        }
+        
     }
 };
 #endif /* game_hpp */
