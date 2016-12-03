@@ -26,8 +26,7 @@ struct Game
     const int window_width = 1920;
     const int window_hight = 1080;
     vector <Game_Object*> Objects;
-    vector <Obstacle_Up*> Obstacle_up;
-    vector <Obstacle_Down*> Obstacle_down;
+    vector <Obstacle_class*> Obstacle;
     ALLEGRO_DISPLAY *window = NULL;
     ALLEGRO_EVENT_QUEUE *event_queue = NULL;
     ALLEGRO_TIMER *timer = NULL;
