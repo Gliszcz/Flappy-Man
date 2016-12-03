@@ -96,11 +96,12 @@ struct Superman : Game_Object
     
     void Update_Object(ALLEGRO_EVENT event)
     {
+        y+=2;
         if(event.type == ALLEGRO_EVENT_KEY_DOWN)
             switch(event.keyboard.keycode)
             {
                 case ALLEGRO_KEY_SPACE:
-                    y-=10;
+                    y-=100;
             }
     }
     
@@ -139,7 +140,6 @@ struct Obstacle_Down : Game_Object
 {
     void Draw_Object()
     {
-
             al_draw_bitmap(image, x, y, 0);
     }
  
@@ -158,5 +158,6 @@ struct Obstacle_Down : Game_Object
         event = ev;
     }
  };
+
 
 #endif /* game_object_h */
