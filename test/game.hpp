@@ -26,7 +26,7 @@ struct Game
     const int window_width = 1920;
     const int window_hight = 1080;
     vector <Game_Object*> Objects;
-    vector <Obstacle_class*> Obstacle;
+    vector <Game_Object*> Obstacles;
     ALLEGRO_DISPLAY *window = NULL;
     ALLEGRO_EVENT_QUEUE *event_queue = NULL;
     ALLEGRO_TIMER *timer = NULL;
@@ -63,13 +63,12 @@ struct Game
         al_register_event_source(event_queue, al_get_timer_event_source(timer));
         al_register_event_source(event_queue, al_get_display_event_source(window));
         al_start_timer(timer);
-        Objects.push_back(new  Background(background, 0, 0, &ev));
-        Objects.push_back(new Ground(ground, 0, 1030, &ev));
-        Objects.push_back(new Superman(superman, 400, 460, &ev));
-        for(int i=0;i<=5*space_obstacle;i+=space_obstacle)
-            Obstacle_up.push_back(new Obstacle_Up(obstacle_up, 1920+i, -800, &ev));
-        for(int i=0;i<=5*space_obstacle;i+=space_obstacle)
-            Obstacle_down.push_back(new Obstacle_Down(obstacle_down, 1920+i, 460, &ev));
+        Objects.push_back(new  Background(background,NULL, 0, 0, &ev));
+        Objects.push_back(new Ground(ground,NULL, 0, 1030, &ev));
+        Objects.push_back(new Superman(superman,NULL, 400, 460, &ev));
+        for(int i=0; i<=5*space_obstacle; i+=space_obstacle)
+            Obstacles.push_back(new Obstacle(obstacle_up,obstacle_down, 1920+i, -800, &ev));
+
     
     }
     void Start()                                // START
@@ -87,6 +86,8 @@ struct Game
         al_destroy_display(window);
         for(int i=0; i<Objects.size(); i++)
             delete Objects[i];
+        for(int i=0; i<Obstacles.size(); i++)
+            delete Obstacles[i];
     }
     
     void GetInput()
@@ -102,10 +103,9 @@ struct Game
         for(int i=0; i<Objects.size(); i++)
             Objects[i]-> Update_Object(ev);
         
-            for(int i=0;i<Obstacle_up.size();i++)
-                Obstacle_up[i]->Update_Object(ev);
-            for(int i=0;i<Obstacle_down.size();i++)
-                Obstacle_down[i]->Update_Object(ev);
+        for(int i=0; i<Obstacles.size(); i++)
+                Obstacles[i]->Update_Object(ev);
+
     }
     
     void Draw()
@@ -114,10 +114,9 @@ struct Game
         {
             for(int i=0; i<Objects.size(); i++)
                 Objects[i]-> Draw_Object();
-            for(int i=0;i<Obstacle_up.size();i++)
-                Obstacle_up[i]->Draw_Object();
-            for(int i=0;i<Obstacle_down.size();i++)
-                Obstacle_down[i]->Draw_Object();
+            for(int i=0; i<Obstacles.size(); i++)
+                Obstacles[i]->Draw_Object();
+
         al_flip_display();
         }
         

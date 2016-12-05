@@ -17,24 +17,26 @@
 using namespace std;
 struct Game_Object
 {
-    ALLEGRO_BITMAP *image;
+    ALLEGRO_BITMAP *image1;
+    ALLEGRO_BITMAP *image2;
     float x;
     float y;
     ALLEGRO_EVENT *event;
     virtual void Draw_Object()
     {
-        al_draw_bitmap(image, x, y, 0);
+        al_draw_bitmap(image1, x, y, 0);
     }
     
     virtual void Update_Object(ALLEGRO_EVENT event)
     {
     }
     
-    Game_Object(ALLEGRO_BITMAP* img, int a, int b, ALLEGRO_EVENT* ev)
+    Game_Object(ALLEGRO_BITMAP* img1,ALLEGRO_BITMAP* img2, int a, int b, ALLEGRO_EVENT* ev)
     {
         x=a;
         y=b;
-        image = img;
+        image1 = img1;
+        image2 = img2;
         event = ev;
     }
 };
@@ -43,22 +45,23 @@ struct Ground : Game_Object
 {
     void Draw_Object()
     {
-        al_draw_bitmap(image, x, y, 0);
-        al_draw_bitmap(image, x+al_get_bitmap_width(image), y, 0);
+        al_draw_bitmap(image1, x, y, 0);
+        al_draw_bitmap(image1, x+al_get_bitmap_width(image1), y, 0);
     }
     
     void Update_Object(ALLEGRO_EVENT event)
     {
         x-=2.5;
-        if(x<-al_get_bitmap_width(image))
+        if(x<-al_get_bitmap_width(image1))
             x=0;
     }
     
-    Ground(ALLEGRO_BITMAP* img, int a, int b, ALLEGRO_EVENT* ev) : Game_Object(img,a,b,ev)
+    Ground(ALLEGRO_BITMAP* img1, ALLEGRO_BITMAP* img2, int a, int b, ALLEGRO_EVENT* ev) : Game_Object(img1,img2,a,b,ev)
     {
         x=a;
         y=b;
-        image = img;
+        image1 = img1;
+        image2 = img2;
         event = ev;
     }
 };
@@ -67,22 +70,23 @@ struct Background : Game_Object
 {
     void Draw_Object()
     {
-        al_draw_bitmap(image, x, y, 0);
-        al_draw_bitmap(image, x+al_get_bitmap_width(image), y, 0);
+        al_draw_bitmap(image1, x, y, 0);
+        al_draw_bitmap(image1, x+al_get_bitmap_width(image1), y, 0);
     }
     
     void Update_Object(ALLEGRO_EVENT event)
     {
         x-=0.6;
-        if(x<-al_get_bitmap_width(image))
+        if(x<-al_get_bitmap_width(image1))
             x=0;
     }
     
-    Background(ALLEGRO_BITMAP* img, int a, int b, ALLEGRO_EVENT* ev) : Game_Object(img,a,b,ev)
+    Background(ALLEGRO_BITMAP* img1, ALLEGRO_BITMAP* img2, int a, int b, ALLEGRO_EVENT* ev) : Game_Object(img1,img2,a,b,ev)
     {
         x=a;
         y=b;
-        image = img;
+        image1 = img1;
+        image2 = img2;
         event = ev;
     }
 };
@@ -92,7 +96,7 @@ struct Superman : Game_Object
     int V=0;
     void Draw_Object()
     {
-        al_draw_bitmap(image, x, y, 0);
+        al_draw_bitmap(image1, x, y, 0);
     }
     
     void Update_Object(ALLEGRO_EVENT event)
@@ -107,11 +111,12 @@ struct Superman : Game_Object
             }
     }
     
-    Superman(ALLEGRO_BITMAP* img, int a, int b, ALLEGRO_EVENT* ev) : Game_Object(img,a,b,ev)
+    Superman(ALLEGRO_BITMAP* img1, ALLEGRO_BITMAP* img2, int a, int b, ALLEGRO_EVENT* ev) : Game_Object(img1,img2,a,b,ev)
     {
         x=a;
         y=b;
-        image = img;
+        image1 = img1;
+        image2 = img2;
         event = ev;
     }
 };
@@ -120,20 +125,24 @@ struct Obstacle : Game_Object
 {
     void Draw_Object()
     {
-        al_draw_bitmap(image, x, y, 0);
+        al_draw_bitmap(image1, x, y, 0);
+        al_draw_bitmap(image2, x, y+1500, 0);
     }
     
     void Update_Object(ALLEGRO_EVENT event)
     {
         x-=2.5;
-        if(x<-al_get_bitmap_width(image))
+        if(x<-al_get_bitmap_width(image1))
+            x=2420;
+        if(x<-al_get_bitmap_width(image2))
             x=2420;
     }
-    Obstacle(ALLEGRO_BITMAP* up_and_down, int a, int b, ALLEGRO_EVENT* ev) : Game_Object(up_and_down,a,b,ev)
+    Obstacle(ALLEGRO_BITMAP* img1, ALLEGRO_BITMAP* img2, int a, int b, ALLEGRO_EVENT* ev) : Game_Object(img1,img2,a,b,ev)
     {
         x=a;
         y=b;
-        image = up_and_down;
+        image1 = img1;
+        image2 = img2;
         event = ev;
     }
 };
