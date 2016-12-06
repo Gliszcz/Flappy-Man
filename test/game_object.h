@@ -126,16 +126,17 @@ struct Obstacle : Game_Object
     void Draw_Object()
     {
         al_draw_bitmap(image1, x, y, 0);
-        al_draw_bitmap(image2, x, y+1500, 0);
+        al_draw_bitmap(image2, x, y+1400, 0);
     }
     
     void Update_Object(ALLEGRO_EVENT event)
     {
-        x-=2.5;
+        x -= 2.5;
         if(x<-al_get_bitmap_width(image1))
-            x=2420;
-        if(x<-al_get_bitmap_width(image2))
-            x=2420;
+        {
+            x = 2420;
+        }
+
     }
     Obstacle(ALLEGRO_BITMAP* img1, ALLEGRO_BITMAP* img2, int a, int b, ALLEGRO_EVENT* ev) : Game_Object(img1,img2,a,b,ev)
     {
