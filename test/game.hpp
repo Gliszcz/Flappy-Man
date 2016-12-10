@@ -38,6 +38,7 @@ struct Game
     ALLEGRO_BITMAP *obstacle_up = NULL;
     ALLEGRO_BITMAP *obstacle_down = NULL;
     ALLEGRO_EVENT ev;
+    Superman *superman_pointer;
 
     void Init()                                 // INIT
     {
@@ -55,9 +56,9 @@ struct Game
         obstacle_down = al_load_bitmap("obstacle_down.png");
         
     }
-    
     void Allegro_Begin_Func()                   // ALLEGRO BEGINNING FUNC
     {
+        superman_pointer = new Superman(superman,NULL,400,460,&ev);
         timer = al_create_timer(1.0 / FPS);
         window = al_create_display(window_width, window_hight);
         event_queue = al_create_event_queue();
@@ -67,7 +68,7 @@ struct Game
         al_start_timer(timer);
         Objects.push_back(new  Background(background,NULL, 0, 0, &ev));
         Objects.push_back(new Ground(ground,NULL, 0, 1030, &ev));
-        Objects.push_back(new Superman(superman,NULL, 400, 460, &ev));
+        Objects.push_back(superman_pointer);
         for(int i=0; i<5*space_obstacle; i+=space_obstacle)
         {
             rand_Y = rand()%700-900;
@@ -108,8 +109,14 @@ struct Game
             Objects[i]-> Update_Object(ev);
         
         for(int i=0; i<Obstacles.size(); i++)
-                Obstacles[i]->Update_Object(ev);
-
+        {
+            Obstacles[i]->Update_Object(ev);
+        }
+        if(superman_pointer->kolizja == true)
+        {
+            al_show_native_message_box(window, "WARNING", "COLLISION", "COLLISION DETECTED", NULL, ALLEGRO_MESSAGEBOX_WARN);
+            running = false;
+        }
     }
     
     void Draw()
@@ -123,7 +130,6 @@ struct Game
 
         al_flip_display();
         }
-        
     }
 };
 #endif /* game_hpp */
