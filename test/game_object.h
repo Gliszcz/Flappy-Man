@@ -150,10 +150,12 @@ struct Obstacle : Game_Object
 
     }
     
-    void Collision(Superman SuperMan)
+    void Collision(Superman* SuperMan)
     {
-        if((x>= SuperMan.x + al_get_bitmap_width(SuperMan.image1) && x<= SuperMan.x + al_get_bitmap_width(SuperMan.image1) + al_get_bitmap_width(image1)) && (SuperMan.y <= y+al_get_bitmap_height(image1) && SuperMan.y >= y+1400))
-            SuperMan.kolizja = true;
+        if(x<= SuperMan->x)
+        {
+            SuperMan->kolizja = true;
+        }
     }
     
     Obstacle(ALLEGRO_BITMAP* img1,ALLEGRO_BITMAP* img2, int a, int b,  ALLEGRO_EVENT* ev) : Game_Object(img1,img2,a,b,ev)
