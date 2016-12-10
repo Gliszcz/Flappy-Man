@@ -83,7 +83,7 @@ struct Game
             GetInput();
             Update();
             Draw();
-            Detect_Collision();
+            Detect_Collision_With_Obstacle();
         }
     }
     
@@ -134,10 +134,10 @@ struct Game
         }
     }
     
-    void Detect_Collision()
+    void Detect_Collision_With_Obstacle()
     {
             for(int i=0; i<Obstacles.size(); i++)
-                Obstacles[i]->Collision()  ;
+                Obstacles[i]->Collision(superman_pointer);
     }
 };
 #endif /* game_hpp */

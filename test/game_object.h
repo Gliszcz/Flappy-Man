@@ -32,7 +32,7 @@ struct Game_Object
     {
     }
     
-    virtual void Collision()
+    virtual void Collision(Game_Object* SuperMan)
     {
     }
     Game_Object(ALLEGRO_BITMAP* img1,ALLEGRO_BITMAP* img2, int a, int b, ALLEGRO_EVENT* ev)
