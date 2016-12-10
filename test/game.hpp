@@ -83,6 +83,7 @@ struct Game
             GetInput();
             Update();
             Draw();
+            Detect_Collision();
         }
     }
     
@@ -135,9 +136,8 @@ struct Game
     
     void Detect_Collision()
     {
-        if(ev.type == ALLEGRO_EVENT_TIMER)
             for(int i=0; i<Obstacles.size(); i++)
-                Obstacles[i]->Collision();
+                Obstacles[i]->Collision()  ;
     }
 };
 #endif /* game_hpp */
