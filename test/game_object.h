@@ -13,6 +13,7 @@
 #include <allegro5/allegro_native_dialog.h>
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_image.h>
+#include <cstdlib>
 
 using namespace std;
 struct Game_Object
@@ -51,7 +52,7 @@ struct Ground : Game_Object
     
     void Update_Object(ALLEGRO_EVENT event)
     {
-        x-=2.5;
+        x-=3.5;
         if(x<-al_get_bitmap_width(image1))
             x=0;
     }
@@ -110,7 +111,7 @@ struct Superman : Game_Object
                     V=-16;
             }
     }
-    
+
     Superman(ALLEGRO_BITMAP* img1, ALLEGRO_BITMAP* img2, int a, int b, ALLEGRO_EVENT* ev) : Game_Object(img1,img2,a,b,ev)
     {
         x=a;
@@ -131,9 +132,11 @@ struct Obstacle : Game_Object
     
     void Update_Object(ALLEGRO_EVENT event)
     {
-        x -= 2.5;
+        
+        x -= 3.5;
         if(x<-al_get_bitmap_width(image1))
         {
+            y = rand()%700-900;
             x = 2420;
         }
 

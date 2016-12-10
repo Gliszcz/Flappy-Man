@@ -16,12 +16,14 @@
 #include <allegro5/allegro_image.h>
 #include "game_object.h"
 #include <vector>
+#include <stdlib.h>
+
 using namespace std;
 struct Game
 {
     bool running = true;
     bool running_game = true;
-    int FPS = 60;
+    int FPS = 60,rand_Y;
     const int space_obstacle = 500;
     const int window_width = 1920;
     const int window_hight = 1080;
@@ -66,9 +68,11 @@ struct Game
         Objects.push_back(new  Background(background,NULL, 0, 0, &ev));
         Objects.push_back(new Ground(ground,NULL, 0, 1030, &ev));
         Objects.push_back(new Superman(superman,NULL, 400, 460, &ev));
-        for(int i=0; i<=5*space_obstacle; i+=space_obstacle)
-            Obstacles.push_back(new Obstacle(obstacle_up,obstacle_down, 1920+i, -800, &ev));
-
+        for(int i=0; i<5*space_obstacle; i+=space_obstacle)
+        {
+            rand_Y = rand()%700-900;
+            Obstacles.push_back(new Obstacle(obstacle_up,obstacle_down, 1920+i, rand_Y, &ev));
+        }
     
     }
     void Start()                                // START
