@@ -16,6 +16,7 @@
 #include <cstdlib>
 
 using namespace std;
+struct Superman;
 struct Game_Object
 {
     ALLEGRO_BITMAP *image1;
@@ -32,7 +33,7 @@ struct Game_Object
     {
     }
     
-    virtual void Collision(Game_Object* SuperMan)
+    virtual void Collision(Superman* SuperMan)
     {
     }
     Game_Object(ALLEGRO_BITMAP* img1,ALLEGRO_BITMAP* img2, int a, int b, ALLEGRO_EVENT* ev)
@@ -152,10 +153,14 @@ struct Obstacle : Game_Object
     
     void Collision(Superman* SuperMan)
     {
-        if(x<= SuperMan->x)
-        {
+        if((SuperMan->x < x+al_get_bitmap_width(image1)&&
+           SuperMan->x+al_get_bitmap_width(SuperMan->image1)>x&&
+           SuperMan->y < y+al_get_bitmap_height(image1)&&
+           SuperMan->y+al_get_bitmap_height(SuperMan->image1)> y) || (SuperMan->x < x+al_get_bitmap_width(image1) &&
+                                                                      SuperMan->x+al_get_bitmap_width(SuperMan->image1)>x&&
+                                                                      SuperMan->y < y+1400+al_get_bitmap_height(image1)&&
+                                                                      SuperMan->y+al_get_bitmap_height(SuperMan->image1)>y+1400))
             SuperMan->kolizja = true;
-        }
     }
     
     Obstacle(ALLEGRO_BITMAP* img1,ALLEGRO_BITMAP* img2, int a, int b,  ALLEGRO_EVENT* ev) : Game_Object(img1,img2,a,b,ev)
