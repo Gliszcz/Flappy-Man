@@ -111,6 +111,7 @@ struct Game
         for(int i=0; i<Obstacles.size(); i++)
         {
             Obstacles[i]->Update_Object(ev);
+            
         }
         if(superman_pointer->kolizja == true)
         {
@@ -130,6 +131,13 @@ struct Game
 
         al_flip_display();
         }
+    }
+    
+    void Detect_Collision()
+    {
+        if(ev.type == ALLEGRO_EVENT_TIMER)
+            for(int i=0; i<Obstacles.size(); i++)
+                Obstacles[i]->Collision();
     }
 };
 #endif /* game_hpp */

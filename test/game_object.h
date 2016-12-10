@@ -32,6 +32,9 @@ struct Game_Object
     {
     }
     
+    virtual void Collision()
+    {
+    }
     Game_Object(ALLEGRO_BITMAP* img1,ALLEGRO_BITMAP* img2, int a, int b, ALLEGRO_EVENT* ev)
     {
         x=a;
@@ -96,6 +99,7 @@ struct Superman : Game_Object
 {
     bool kolizja = false;
     int V=0;
+    
     void Draw_Object()
     {
         al_draw_bitmap(image1, x, y, 0);
@@ -105,18 +109,15 @@ struct Superman : Game_Object
     {
         y+=V;
         V+=1;
-        if(y == 0)
-            V=0;
+
         if(event.type == ALLEGRO_EVENT_KEY_DOWN)
             switch(event.keyboard.keycode)
             {
-                case ALLEGRO_KEY_SPACE:
+               case ALLEGRO_KEY_SPACE:
                     V=-16;
             }
-        if(y >= 1043 - al_get_bitmap_height(image1) && y<=1040)
+        if((y >= 1048 - al_get_bitmap_height(image1)) && (y<=1040))
             kolizja = true;
-        else
-            kolizja = false;
     }
 
     Superman(ALLEGRO_BITMAP* img1,ALLEGRO_BITMAP* img2, int a, int b, ALLEGRO_EVENT* ev) : Game_Object(img1,img2,a,b,ev)
@@ -143,11 +144,18 @@ struct Obstacle : Game_Object
         x -= 3.5;
         if(x<-al_get_bitmap_width(image1))
         {
-            y = rand()%700-900;
+            y = rand()%700-890;
             x = 2420;
         }
 
     }
+    
+    void Collision(Superman SuperMan)
+    {
+        if((x>= SuperMan.x + al_get_bitmap_width(SuperMan.image1) && x<= SuperMan.x + al_get_bitmap_width(SuperMan.image1) + al_get_bitmap_width(image1)) && (SuperMan.y <= y+al_get_bitmap_height(image1) && SuperMan.y >= y+1400))
+            SuperMan.kolizja = true;
+    }
+    
     Obstacle(ALLEGRO_BITMAP* img1,ALLEGRO_BITMAP* img2, int a, int b,  ALLEGRO_EVENT* ev) : Game_Object(img1,img2,a,b,ev)
     {
         x=a;
