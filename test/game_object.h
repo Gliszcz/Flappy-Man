@@ -154,12 +154,12 @@ struct Obstacle : Game_Object
     void Collision(Superman* SuperMan)
     {
         if((SuperMan->x < x+al_get_bitmap_width(image1)&&
-           SuperMan->x+al_get_bitmap_width(SuperMan->image1)>x&&
-           SuperMan->y < y+al_get_bitmap_height(image1)&&
+           SuperMan->x+al_get_bitmap_width(SuperMan->image1)-10>x&&
+           SuperMan->y+10 < y+al_get_bitmap_height(image1)&&
            SuperMan->y+al_get_bitmap_height(SuperMan->image1)> y) || (SuperMan->x < x+al_get_bitmap_width(image1) &&
-                                                                      SuperMan->x+al_get_bitmap_width(SuperMan->image1)>x&&
+                                                                      SuperMan->x+al_get_bitmap_width(SuperMan->image1)-12>x&&
                                                                       SuperMan->y < y+1400+al_get_bitmap_height(image1)&&
-                                                                      SuperMan->y+al_get_bitmap_height(SuperMan->image1)>y+1400))
+                                                                      SuperMan->y+al_get_bitmap_height(SuperMan->image1)-20>y+1400))
             SuperMan->kolizja = true;
     }
     
