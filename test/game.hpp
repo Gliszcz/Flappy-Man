@@ -37,6 +37,7 @@ struct Game
     ALLEGRO_BITMAP *superman = NULL;
     ALLEGRO_BITMAP *obstacle_up = NULL;
     ALLEGRO_BITMAP *obstacle_down = NULL;
+    ALLEGRO_BITMAP *score_box = NULL;
     ALLEGRO_EVENT ev;
     Superman *superman_pointer;
 
@@ -45,6 +46,7 @@ struct Game
         al_init();
         al_install_keyboard();
         al_init_image_addon();
+        al_init_font_addon();
     }
     
     void Load_Files()                           // LOAD FILES
@@ -54,6 +56,7 @@ struct Game
         superman = al_load_bitmap("superman.png");
         obstacle_up = al_load_bitmap("obstacle_up.png");
         obstacle_down = al_load_bitmap("obstacle_down.png");
+        score_box = al_load_bitmap("score_box.png");
         
     }
     void Allegro_Begin_Func()                   // ALLEGRO BEGINNING FUNC
@@ -69,6 +72,7 @@ struct Game
         Objects.push_back(new  Background(background,NULL, 0, 0, &ev));
         Objects.push_back(new Ground(ground,NULL, 0, 1030, &ev));
         Objects.push_back(superman_pointer);
+        Objects.push_back(new Score(score_box,NULL,30,30,&ev)); 
         for(int i=0; i<5*space_obstacle; i+=space_obstacle)
         {
             rand_Y = rand()%700-900;

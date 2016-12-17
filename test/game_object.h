@@ -13,6 +13,7 @@
 #include <allegro5/allegro_native_dialog.h>
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_image.h>
+#include <allegro5/allegro_font.h>
 #include <cstdlib>
 
 using namespace std;
@@ -173,6 +174,31 @@ struct Obstacle : Game_Object
     }
 };
 
-
+struct Score : Game_Object
+{
+    ALLEGRO_FONT *font;
+    int score = 0;
+    void Draw_Object()
+    {
+        al_draw_bitmap(image1, x, y, 0);
+        //al_draw_text(font, al_map_rgb(0, 0, 0), 30, 30, NULL, score);
+    }
+    void Update_Object(Superman *SuperMan, Obstacle *Obstale)
+    {
+        int x_superman, x_obstale;
+        x_superman = SuperMan->x;
+        x_obstale = Obstale->x;
+        if(x_superman == x_obstale+al_get_bitmap_width(Obstale->image1))
+            score++;
+    }
+    Score(ALLEGRO_BITMAP* img1,ALLEGRO_BITMAP* img2, int a, int b,  ALLEGRO_EVENT* ev) : Game_Object(img1,img2,a,b,ev)
+    {
+        x=a;
+        y=b;
+        image1 = img1;
+        image2 = img2;
+        event = ev;
+    }
+};
 
 #endif /* game_object_h */
