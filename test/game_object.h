@@ -15,6 +15,7 @@
 #include <allegro5/allegro_image.h>
 #include <allegro5/allegro_font.h>
 #include <cstdlib>
+#include <sstream>
 
 using namespace std;
 struct Superman;
@@ -177,11 +178,13 @@ struct Obstacle : Game_Object
 struct Score : Game_Object
 {
     ALLEGRO_FONT *font = al_create_builtin_font();
-    int score = 0;
+    int score_int = 0;
+    string str = "0";
+    char const *score = str.c_str();
     void Draw_Object()
     {
-        al_draw_bitmap(image1, x, y, 0);
-        //al_draw_text(font, al_map_rgb(0, 0, 0), x+al_get_bitmap_width(image1), 30, NULL, score);   <- NIE WIE CO TO ZA FUNKCJA!  WHY ?
+        al_draw_text(font, al_map_rgb(0, 0, 0), x, 30, NULL, "SCORE !! ");
+        al_draw_text(font, al_map_rgb(0, 0, 0),x+100,30,NULL,score);
     }
     void Update_Object(Superman *SuperMan, Obstacle *Obstale)
     {
@@ -189,7 +192,9 @@ struct Score : Game_Object
         x_superman = SuperMan->x;
         x_obstale = Obstale->x;
         if(x_superman == x_obstale+al_get_bitmap_width(Obstale->image1))
-            score++;
+            score_int++;
+        str = to_string(score_int);
+        score = str.c_str();
     }
     Score(ALLEGRO_BITMAP* img1,ALLEGRO_BITMAP* img2, int a, int b,  ALLEGRO_EVENT* ev) : Game_Object(img1,img2,a,b,ev)
     {
