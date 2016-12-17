@@ -176,12 +176,12 @@ struct Obstacle : Game_Object
 
 struct Score : Game_Object
 {
-    ALLEGRO_FONT *font;
+    ALLEGRO_FONT *font = al_create_builtin_font();
     int score = 0;
     void Draw_Object()
     {
         al_draw_bitmap(image1, x, y, 0);
-        //al_draw_text(font, al_map_rgb(0, 0, 0), 30, 30, NULL, score);
+        //al_draw_text(font, al_map_rgb(0, 0, 0), x+al_get_bitmap_width(image1), 30, NULL, score);   <- NIE WIE CO TO ZA FUNKCJA!  WHY ?
     }
     void Update_Object(Superman *SuperMan, Obstacle *Obstale)
     {
