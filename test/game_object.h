@@ -19,6 +19,7 @@
 
 using namespace std;
 struct Superman;
+struct Score;
 struct Game_Object
 {
     ALLEGRO_BITMAP *image1;
@@ -138,7 +139,6 @@ struct Superman : Game_Object
 
 struct Obstacle : Game_Object
 {
-    int score_int = 0;
     void Draw_Object()
     {
         al_draw_bitmap(image1, x, y, 0);
@@ -157,7 +157,7 @@ struct Obstacle : Game_Object
 
     }
     
-    void Collision(Superman* SuperMan)
+    void Collision(Superman* SuperMan,Score* ScorE)
     {
         if((SuperMan->x < x+al_get_bitmap_width(image1)&&
            SuperMan->x+al_get_bitmap_width(SuperMan->image1)-10>x&&
@@ -169,7 +169,7 @@ struct Obstacle : Game_Object
             SuperMan->kolizja = true;
         
         if(SuperMan->x >= x+al_get_bitmap_width(image1)&&SuperMan->x<=x+10+al_get_bitmap_width(image1))
-            score_int++;
+            ScorE->score_int += 1;
     }
     
     Obstacle(ALLEGRO_BITMAP* img1,ALLEGRO_BITMAP* img2, int a, int b,  ALLEGRO_EVENT* ev) : Game_Object(img1,img2,a,b,ev)
@@ -184,15 +184,17 @@ struct Obstacle : Game_Object
 struct Score : Game_Object
 {
     ALLEGRO_FONT *font = al_create_builtin_font();
+    int score_int = 0;
     string str = "0";
     char const *score = str.c_str();
-    
     void Draw_Object()
     {
-        al_draw_text(font, al_map_rgb(0, 0, 0), 30, 30, NULL, "SCORE : ");
-        al_draw_text(font, al_map_rgb(0, 0, 0),130,30,NULL,score);
+        al_draw_text(font, al_map_rgb(0, 0, 0), x, y, NULL, "SCORE : ");
+        al_draw_text(font, al_map_rgb(0, 0, 0),x+100,y,NULL,score);
     }
-
+    void Update_Object()
+    {
+    }
     Score(ALLEGRO_BITMAP* img1,ALLEGRO_BITMAP* img2, int a, int b,  ALLEGRO_EVENT* ev) : Game_Object(img1,img2,a,b,ev)
     {
         x=a;
