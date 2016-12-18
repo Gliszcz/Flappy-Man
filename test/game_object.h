@@ -36,12 +36,10 @@ struct Game_Object
     {
     }
     
-    virtual void Collision(Superman* SuperMan)
+    virtual void Collision(Superman* SuperMan, Score* ScorE)
     {
     }
-    virtual void Score_Counting(Superman* SuperMan)
-    {
-    }
+
     Game_Object(ALLEGRO_BITMAP* img1,ALLEGRO_BITMAP* img2, int a, int b, ALLEGRO_EVENT* ev)
     {
         x=a;

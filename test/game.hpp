@@ -39,6 +39,7 @@ struct Game
     ALLEGRO_BITMAP *obstacle_down = NULL;
     ALLEGRO_EVENT ev;
     Superman *superman_pointer;
+    Score *score_pointer;
 
     void Init()                                 // INIT
     {
@@ -60,6 +61,7 @@ struct Game
     void Allegro_Begin_Func()                   // ALLEGRO BEGINNING FUNC
     {
         superman_pointer = new Superman(superman,NULL,400,460,&ev);
+        score_pointer = new Score(NULL,NULL,30,30,&ev);
         timer = al_create_timer(1.0 / FPS);
         window = al_create_display(window_width, window_hight);
         event_queue = al_create_event_queue();
@@ -70,7 +72,7 @@ struct Game
         Objects.push_back(new  Background(background,NULL, 0, 0, &ev));
         Objects.push_back(new Ground(ground,NULL, 0, 1030, &ev));
         Objects.push_back(superman_pointer);
-        Objects.push_back(new Score(NULL,NULL,30,30,&ev));
+        Objects.push_back(score_pointer);
         for(int i=0; i<5*space_obstacle; i+=space_obstacle)
         {
             rand_Y = rand()%700-900;
@@ -85,7 +87,7 @@ struct Game
             GetInput();
             Update();
             Draw();
-            Detect_Collision_With_Obstacle();
+            Detect_Collision_With_Obstacle_And_Points();
         }
     }
     
@@ -136,10 +138,10 @@ struct Game
         }
     }
     
-    void Detect_Collision_With_Obstacle()
+    void Detect_Collision_With_Obstacle_And_Points()
     {
             for(int i=0; i<Obstacles.size(); i++)
-                Obstacles[i]->Collision(superman_pointer);
+                Obstacles[i]->Collision(superman_pointer,score_pointer);
     }
 
 };
