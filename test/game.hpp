@@ -70,6 +70,7 @@ struct Game
         Objects.push_back(new  Background(background,NULL, 0, 0, &ev));
         Objects.push_back(new Ground(ground,NULL, 0, 1030, &ev));
         Objects.push_back(superman_pointer);
+        Objects.push_back(new Score(NULL,NULL,30,30,&ev));
         for(int i=0; i<5*space_obstacle; i+=space_obstacle)
         {
             rand_Y = rand()%700-900;
@@ -85,7 +86,6 @@ struct Game
             Update();
             Draw();
             Detect_Collision_With_Obstacle();
-            Score_Counting_Func();
         }
     }
     
@@ -141,10 +141,6 @@ struct Game
             for(int i=0; i<Obstacles.size(); i++)
                 Obstacles[i]->Collision(superman_pointer);
     }
-    void Score_Counting_Func()
-    {
-        for(int i=0; i<Obstacles.size(); i++)
-            Obstacles[i]->Score_Counting(superman_pointer);
-    }
+
 };
 #endif /* game_hpp */

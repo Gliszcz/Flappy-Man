@@ -138,15 +138,9 @@ struct Superman : Game_Object
 
 struct Obstacle : Game_Object
 {
-    ALLEGRO_FONT *font = al_create_builtin_font();
     int score_int = 0;
-    string str = "0";
-    char const *score = str.c_str();
-    
     void Draw_Object()
     {
-        al_draw_text(font, al_map_rgb(0, 0, 0), 30, 30, NULL, "SCORE : ");
-        al_draw_text(font, al_map_rgb(0, 0, 0),130,30,NULL,score);
         al_draw_bitmap(image1, x, y, 0);
         al_draw_bitmap(image2, x, y+1400, 0);
     }
@@ -173,13 +167,9 @@ struct Obstacle : Game_Object
                                                                       SuperMan->y < y+1400+al_get_bitmap_height(image1)&&
                                                                       SuperMan->y+al_get_bitmap_height(SuperMan->image1)-20>y+1400))
             SuperMan->kolizja = true;
-    }
-    void Score_Counting(Superman* SuperMan)
-    {
-        if(SuperMan->x == x + al_get_bitmap_width(image2))
+        
+        if(SuperMan->x >= x+al_get_bitmap_width(image1)&&SuperMan->x<=x+10+al_get_bitmap_width(image1))
             score_int++;
-        str = to_string(score_int);
-        score = str.c_str();
     }
     
     Obstacle(ALLEGRO_BITMAP* img1,ALLEGRO_BITMAP* img2, int a, int b,  ALLEGRO_EVENT* ev) : Game_Object(img1,img2,a,b,ev)
@@ -191,6 +181,26 @@ struct Obstacle : Game_Object
         event = ev;
     }
 };
+struct Score : Game_Object
+{
+    ALLEGRO_FONT *font = al_create_builtin_font();
+    string str = "0";
+    char const *score = str.c_str();
+    
+    void Draw_Object()
+    {
+        al_draw_text(font, al_map_rgb(0, 0, 0), 30, 30, NULL, "SCORE : ");
+        al_draw_text(font, al_map_rgb(0, 0, 0),130,30,NULL,score);
+    }
 
+    Score(ALLEGRO_BITMAP* img1,ALLEGRO_BITMAP* img2, int a, int b,  ALLEGRO_EVENT* ev) : Game_Object(img1,img2,a,b,ev)
+    {
+        x=a;
+        y=b;
+        image1 = img1;
+        image2 = img2;
+        event = ev;
+    }
+};
 
 #endif /* game_object_h */
