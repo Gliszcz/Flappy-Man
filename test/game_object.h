@@ -15,7 +15,6 @@
 #include <allegro5/allegro_image.h>
 #include <allegro5/allegro_font.h>
 #include <cstdlib>
-#include <sstream>
 
 using namespace std;
 struct Superman;
@@ -134,6 +133,26 @@ struct Superman : Game_Object
         event = ev;
     }
 };
+struct Score : Game_Object
+{
+    ALLEGRO_FONT *font = al_create_builtin_font();//al_load_font("FlappyBirdy.ttf", 24, 0);
+    int score_int = 0;
+    void Draw_Object()
+    {
+        al_draw_textf(font, al_map_rgb(0, 0, 0), x+100, y, 0, "SCORE : %d", score_int/3);
+    }
+    void Update_Object()
+    {
+    }
+    Score(ALLEGRO_BITMAP* img1,ALLEGRO_BITMAP* img2, int a, int b,  ALLEGRO_EVENT* ev) : Game_Object(img1,img2,a,b,ev)
+    {
+        x=a;
+        y=b;
+        image1 = img1;
+        image2 = img2;
+        event = ev;
+    }
+};
 
 struct Obstacle : Game_Object
 {
@@ -149,7 +168,7 @@ struct Obstacle : Game_Object
         x -= 3.5;
         if(x<-al_get_bitmap_width(image1))
         {
-            y = rand()%700-890;
+            y = rand()%700-1000;
             x = 2420;
         }
 
@@ -179,28 +198,6 @@ struct Obstacle : Game_Object
         event = ev;
     }
 };
-struct Score : Game_Object
-{
-    ALLEGRO_FONT *font = al_create_builtin_font();
-    int score_int = 0;
-    string str = "0";
-    char const *score = str.c_str();
-    void Draw_Object()
-    {
-        al_draw_text(font, al_map_rgb(0, 0, 0), x, y, NULL, "SCORE : ");
-        al_draw_text(font, al_map_rgb(0, 0, 0),x+100,y,NULL,score);
-    }
-    void Update_Object()
-    {
-    }
-    Score(ALLEGRO_BITMAP* img1,ALLEGRO_BITMAP* img2, int a, int b,  ALLEGRO_EVENT* ev) : Game_Object(img1,img2,a,b,ev)
-    {
-        x=a;
-        y=b;
-        image1 = img1;
-        image2 = img2;
-        event = ev;
-    }
-};
+
 
 #endif /* game_object_h */

@@ -17,6 +17,7 @@
 #include "game_object.h"
 #include <vector>
 #include <stdlib.h>
+#include <sstream>
 
 using namespace std;
 struct Game
@@ -120,7 +121,11 @@ struct Game
         }
         if(superman_pointer->kolizja == true)
         {
-            al_show_native_message_box(window, "WARNING", "COLLISION", "COLLISION DETECTED", NULL, ALLEGRO_MESSAGEBOX_WARN);
+            stringstream strs;
+            strs << score_pointer->score_int/3;
+            string tmp = strs.str();
+            const char* score_char = (char*)tmp.c_str();
+            al_show_native_message_box(window, "GAMGE OVER! YOUR SCORE : ", "GAME OVER !",  score_char, NULL, ALLEGRO_MESSAGEBOX_WARN);
             running = false;
         }
     }
