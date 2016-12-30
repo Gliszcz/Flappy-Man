@@ -8,12 +8,13 @@
 
 #ifndef game_hpp
 #define game_hpp
-
 #include <stdio.h>
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_native_dialog.h>
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_image.h>
+#include <allegro5/allegro_ttf.h>
+#include <allegro5/allegro_font.h>
 #include "game_object.h"
 #include <vector>
 #include <stdlib.h>
@@ -38,6 +39,11 @@ struct Game
     ALLEGRO_BITMAP *superman = NULL;
     ALLEGRO_BITMAP *obstacle_up = NULL;
     ALLEGRO_BITMAP *obstacle_down = NULL;
+    ALLEGRO_BITMAP *main_menu_exit = NULL;
+    ALLEGRO_BITMAP *main_menu_new_game = NULL;
+    ALLEGRO_BITMAP *game_over_new_game = NULL;
+    ALLEGRO_BITMAP *game_over_go_to_menu = NULL;
+
     ALLEGRO_EVENT ev;
     Superman *superman_pointer;
     Score *score_pointer;
@@ -57,11 +63,15 @@ struct Game
         superman = al_load_bitmap("superman.png");
         obstacle_up = al_load_bitmap("obstacle_up.png");
         obstacle_down = al_load_bitmap("obstacle_down.png");
+        main_menu_exit = al_load_bitmap("exit.png");
+        main_menu_new_game = al_load_bitmap("new_game.png");
+        game_over_new_game = al_load_bitmap("game_over_new_game.png");
+        game_over_go_to_menu = al_load_bitmap("game_over_go_to_menu.png");
         
     }
     void Allegro_Begin_Func()                   // ALLEGRO BEGINNING FUNC
     {
-        superman_pointer = new Superman(superman,NULL,400,460,&ev);
+        superman_pointer = new Superman(superman,NULL,400,60,&ev);
         score_pointer = new Score(NULL,NULL,30,30,&ev);
         timer = al_create_timer(1.0 / FPS);
         window = al_create_display(window_width, window_hight);
@@ -117,7 +127,6 @@ struct Game
         for(int i=0; i<Obstacles.size(); i++)
         {
             Obstacles[i]->Update_Object(ev);
-            
         }
         if(superman_pointer->kolizja == true)
         {
@@ -138,7 +147,6 @@ struct Game
                 Objects[i]-> Draw_Object();
             for(int i=0; i<Obstacles.size(); i++)
                 Obstacles[i]->Draw_Object();
-
         al_flip_display();
         }
     }
@@ -148,6 +156,5 @@ struct Game
             for(int i=0; i<Obstacles.size(); i++)
                 Obstacles[i]->Collision(superman_pointer,score_pointer);
     }
-
 };
 #endif /* game_hpp */

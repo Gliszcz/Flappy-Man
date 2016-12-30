@@ -13,12 +13,14 @@
 #include <allegro5/allegro_native_dialog.h>
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_image.h>
+#include <allegro5/allegro_ttf.h>
 #include <allegro5/allegro_font.h>
 #include <cstdlib>
 
 using namespace std;
 struct Superman;
 struct Score;
+
 struct Game_Object
 {
     ALLEGRO_BITMAP *image1;
@@ -133,9 +135,10 @@ struct Superman : Game_Object
         event = ev;
     }
 };
+
 struct Score : Game_Object
 {
-    ALLEGRO_FONT *font = al_create_builtin_font();//al_load_font("FlappyBirdy.ttf", 24, 0);
+    ALLEGRO_FONT *font = al_create_builtin_font();// al_load_font("FlappyBirdy.ttf", 24, 0);
     int score_int = 0;
     void Draw_Object()
     {
@@ -164,14 +167,12 @@ struct Obstacle : Game_Object
     
     void Update_Object(ALLEGRO_EVENT event)
     {
-        
         x -= 3.5;
         if(x<-al_get_bitmap_width(image1))
         {
             y = rand()%700-1000;
             x = 2420;
         }
-
     }
     
     void Collision(Superman* SuperMan,Score* ScorE)
@@ -198,6 +199,37 @@ struct Obstacle : Game_Object
         event = ev;
     }
 };
-
+/*struct Main_Menu : Game_Object
+{
+    int choice = 1;
+    void Draw_Object()
+    {
+        if(choice == 1)
+            al_draw_bitmap(image1, x, y, 0);
+        else
+            al_draw_bitmap(image2, x, y, 0);
+    }
+    void Update_Object(ALLEGRO_EVENT event)
+    {
+        
+        if(event.type == ALLEGRO_EVENT_KEY_DOWN)
+            switch(event.keyboard.keycode)
+            {
+                case ALLEGRO_KEY_DOWN:
+                    choice = 2;
+                case ALLEGRO_KEY_UP:
+                    choice = 1;
+            }
+    }
+    Main_Menu(ALLEGRO_BITMAP* img1,ALLEGRO_BITMAP* img2, int a, int b,  ALLEGRO_EVENT* ev) : Game_Object(img1,img2,a,b,ev)
+    {
+        x=a;
+        y=b;
+        image1 = img1;
+        image2 = img2;
+        event = ev;
+    }
+    
+};*/
 
 #endif /* game_object_h */
