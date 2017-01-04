@@ -24,8 +24,9 @@ using namespace std;
 struct Game
 {
     bool running = true;
-    bool running_game = true;
+    bool running_game = false;
     int FPS = 60,rand_Y;
+    int state = 0;                 // 0 - main_menu_start 1 - main_menu_exit 2 - game 3 - game_over_new_game  4 - game_over_main_menu
     const int space_obstacle = 500;
     const int window_width = 1920;
     const int window_hight = 1080;
@@ -91,8 +92,60 @@ struct Game
         }
     
     }
+    void Change_State()
+    {
+        if(state == 0)
+        {
+            al_draw_bitmap(main_menu_new_game, 0, 0, 0);
+            if(ev.type == ALLEGRO_EVENT_KEY_DOWN)
+                switch(ev.keyboard.keycode)
+                {
+                        case ALLEGRO_KEY_ENTER:
+                            running_game = true;
+                        case ALLEGRO_KEY_DOWN :
+                        state = 1;
+                }
+        }
+        if(state == 1)
+        {
+            al_draw_bitmap(main_menu_exit, 0, 0, 0);
+            if(ev.type == ALLEGRO_EVENT_KEY_DOWN)
+                switch(ev.keyboard.keycode)
+                {
+                    case ALLEGRO_KEY_ENTER:
+                        running = false;
+                    case ALLEGRO_KEY_UP:
+                        state = 0;
+                }
+        }
+        if(state == 3)
+        {
+            al_draw_bitmap(game_over_new_game, 0, 0, 0);
+            if(ev.type == ALLEGRO_EVENT_KEY_DOWN)
+                switch(ev.keyboard.keycode)
+                {
+                    case ALLEGRO_KEY_ENTER:
+                        running_game = true;
+                    case ALLEGRO_KEY_DOWN :
+                        state = 4;
+                }
+        }
+        if(state == 4)
+        {
+            al_draw_bitmap(game_over_go_to_menu, 0, 0, 0);
+            if(ev.type == ALLEGRO_EVENT_KEY_DOWN)
+                switch(ev.keyboard.keycode)
+                {
+                    case ALLEGRO_KEY_ENTER:
+                        state = 0;
+                    case ALLEGRO_KEY_UP :
+                        state = 3;
+                }
+        }
+    }
     void Start()                                // START
     {
+        
         while (running)
         {
             GetInput();
@@ -101,7 +154,7 @@ struct Game
             Detect_Collision_With_Obstacle_And_Points();
         }
     }
-    
+
     void CleanUp()
     {
         al_destroy_display(window);
@@ -135,7 +188,7 @@ struct Game
             string tmp = strs.str();
             const char* score_char = (char*)tmp.c_str();
             al_show_native_message_box(window, "GAMGE OVER! YOUR SCORE : ", "GAME OVER !",  score_char, NULL, ALLEGRO_MESSAGEBOX_WARN);
-            running = false;
+            running_game = false;
         }
     }
     

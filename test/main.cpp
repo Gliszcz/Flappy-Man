@@ -6,6 +6,7 @@ int main(int argc, char **argv)
     game.Init();
     game.Load_Files();
     game.Allegro_Begin_Func();
+    game.Change_State();
     game.Start();
     game.CleanUp();
     return 0;
