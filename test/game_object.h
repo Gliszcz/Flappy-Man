@@ -199,7 +199,7 @@ struct Obstacle : Game_Object
         event = ev;
     }
 };
-/*struct Main_Menu : Game_Object
+struct Main_Menu : Game_Object
 {
     int choice = 1;
     void Draw_Object()
@@ -230,6 +230,6 @@ struct Obstacle : Game_Object
         event = ev;
     }
     
-};*/
+};
 
 #endif /* game_object_h */
