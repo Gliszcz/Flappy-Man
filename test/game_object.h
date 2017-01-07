@@ -198,4 +198,40 @@ struct Obstacle : Game_Object
         event = ev;
     }
 };
+struct Arrow_Pointer :Game_Object
+{
+    int choice = 0;
+    void Draw_Object()
+    {
+        al_draw_bitmap(image1, x, y, 0);
+    }
+    
+    void Update_Object(ALLEGRO_EVENT event)
+    {
+        if(event.type == ALLEGRO_EVENT_KEY_DOWN)
+            switch(event.keyboard.keycode)
+            {
+                case ALLEGRO_KEY_DOWN:
+                {
+                    y+=200;
+                    choice++;
+                    break;
+                }
+                case ALLEGRO_KEY_UP:
+                {
+                    y-=200;
+                    choice--;
+                    break;
+                }
+            }
+    }
+    Arrow_Pointer(ALLEGRO_BITMAP* img1,ALLEGRO_BITMAP* img2, int a, int b,  ALLEGRO_EVENT* ev) : Game_Object(img1,img2,a,b,ev)
+    {
+        x=a;
+        y=b;
+        image1 = img1;
+        image2 = img2;
+        event = ev;
+    }
+};
 #endif /* game_object_h */

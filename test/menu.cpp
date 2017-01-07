@@ -23,9 +23,31 @@ void Menu::Update()
         switch(ev.keyboard.keycode)
         case ALLEGRO_KEY_ENTER:
         {
-            scene_menager->ChangeScene(Scene_Menager::state::Game);
-            game_over = true;
+            switch(arrow->choice)
+            {
+                case 0:
+                {
+                    scene_menager->ChangeScene(Scene_Menager::state::Game);
+                    game_over = true;
+                }
+                break;
+                case 1:
+                {
+                    scene_menager->running = false;
+                }
+                break;
+                case 2:
+                {
+                    scene_menager->running = false;
+                }
+                    break;
+                case 3:
+                {
+                    scene_menager->running = false;
+                }
+            }
         }
+    arrow->Update_Object(ev);
 }
 void Menu::Draw()
 {
@@ -40,6 +62,8 @@ void Menu::Draw()
         al_draw_text(font_small, al_map_rgb(255, 51, 51), 660, 430, 0, "SCORE");
         al_draw_text(font_small, al_map_rgb(255, 51, 51), 660, 630, 0, "CREDITS");
         al_draw_text(font_small, al_map_rgb(255, 51, 51), 660, 830, 0, "EXIT");
+        arrow->Draw_Object();
+
     }
     else
     {
@@ -49,6 +73,8 @@ void Menu::Draw()
         al_draw_text(font_small, al_map_rgb(255, 51, 51), 660, 430, 0, "SCORE");
         al_draw_text(font_small, al_map_rgb(255, 51, 51), 660, 630, 0, "CREDITS");
         al_draw_text(font_small, al_map_rgb(255, 51, 51), 660, 830, 0, "EXIT");
+        arrow->Draw_Object();
+
     }
     al_flip_display();
 }
