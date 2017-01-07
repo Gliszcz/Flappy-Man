@@ -138,11 +138,11 @@ struct Superman : Game_Object
 
 struct Score : Game_Object
 {
-    ALLEGRO_FONT *font = al_create_builtin_font();// al_load_font("FlappyBirdy.ttf", 24, 0);
+  // ALLEGRO_FONT *font = al_create_builtin_font();// al_load_font("FlappyBirdy.ttf", 24, 0);
     int score_int = 0;
     void Draw_Object()
     {
-        al_draw_textf(font, al_map_rgb(0, 0, 0), x+100, y, 0, "SCORE : %d", score_int/3);
+        //al_draw_textf(font, al_map_rgb(0, 0, 0), x+100, y, 0, "SCORE : %d", score_int/3);
     }
     void Update_Object()
     {
@@ -199,7 +199,7 @@ struct Obstacle : Game_Object
         event = ev;
     }
 };
-struct Main_Menu : Game_Object
+/*struct Main_Menu : Game_Object
 {
     int choice = 1;
     void Draw_Object()
@@ -231,5 +231,5 @@ struct Main_Menu : Game_Object
     }
     
 };
-
+*/
 #endif /* game_object_h */

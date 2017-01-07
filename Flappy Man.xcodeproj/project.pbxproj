@@ -21,6 +21,10 @@
 		9D5160481DDA0BB2003221F0 /* liballegro_ttf.5.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D51603B1DDA0BB2003221F0 /* liballegro_ttf.5.2.1.dylib */; };
 		9D5160491DDA0BB2003221F0 /* liballegro_video.5.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D51603C1DDA0BB2003221F0 /* liballegro_video.5.2.1.dylib */; };
 		9D51604A1DDA0BB2003221F0 /* liballegro.5.2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D51603D1DDA0BB2003221F0 /* liballegro.5.2.1.dylib */; };
+		9D5A23001E215BE00028F17B /* scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D5A22FF1E215BE00028F17B /* scene.cpp */; };
+		9D5A23031E215CA20028F17B /* scene_menager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D5A23011E215CA20028F17B /* scene_menager.cpp */; };
+		9D5A23051E215DC90028F17B /* game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D5A23041E215DC90028F17B /* game.cpp */; };
+		9D5A23071E21615E0028F17B /* menu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D5A23061E21615E0028F17B /* menu.cpp */; };
 		9DD05BB81DDB5E9600D42B7F /* libpng16.16.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD05BB71DDB5E9600D42B7F /* libpng16.16.dylib */; };
 		9DD05BBA1DDB5F1600D42B7F /* libjpeg.8.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD05BB91DDB5F1600D42B7F /* libjpeg.8.dylib */; };
 /* End PBXBuildFile section */
@@ -53,6 +57,13 @@
 		9D51603B1DDA0BB2003221F0 /* liballegro_ttf.5.2.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liballegro_ttf.5.2.1.dylib; path = ../../../../usr/local/Cellar/allegro/5.2.1.1_1/lib/liballegro_ttf.5.2.1.dylib; sourceTree = "<group>"; };
 		9D51603C1DDA0BB2003221F0 /* liballegro_video.5.2.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liballegro_video.5.2.1.dylib; path = ../../../../usr/local/Cellar/allegro/5.2.1.1_1/lib/liballegro_video.5.2.1.dylib; sourceTree = "<group>"; };
 		9D51603D1DDA0BB2003221F0 /* liballegro.5.2.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liballegro.5.2.1.dylib; path = ../../../../usr/local/Cellar/allegro/5.2.1.1_1/lib/liballegro.5.2.1.dylib; sourceTree = "<group>"; };
+		9D5A22FC1E2148520028F17B /* Scene_menager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Scene_menager.h; sourceTree = "<group>"; };
+		9D5A22FD1E214A100028F17B /* scene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = scene.h; sourceTree = "<group>"; };
+		9D5A22FE1E2151CE0028F17B /* menu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = menu.h; sourceTree = "<group>"; };
+		9D5A22FF1E215BE00028F17B /* scene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = scene.cpp; sourceTree = "<group>"; };
+		9D5A23011E215CA20028F17B /* scene_menager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = scene_menager.cpp; sourceTree = "<group>"; };
+		9D5A23041E215DC90028F17B /* game.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game.cpp; sourceTree = "<group>"; };
+		9D5A23061E21615E0028F17B /* menu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = menu.cpp; sourceTree = "<group>"; };
 		9DD05BB71DDB5E9600D42B7F /* libpng16.16.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpng16.16.dylib; path = ../../../../../usr/local/Cellar/libpng/1.6.26/lib/libpng16.16.dylib; sourceTree = "<group>"; };
 		9DD05BB91DDB5F1600D42B7F /* libjpeg.8.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libjpeg.8.dylib; path = ../../../../../usr/local/Cellar/jpeg/8d/lib/libjpeg.8.dylib; sourceTree = "<group>"; };
 		9DD05BBD1DDB6C2800D42B7F /* game.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = game.hpp; sourceTree = "<group>"; };
@@ -106,8 +117,15 @@
 			isa = PBXGroup;
 			children = (
 				9D5160291DDA0520003221F0 /* main.cpp */,
+				9D5A23041E215DC90028F17B /* game.cpp */,
+				9D5A23011E215CA20028F17B /* scene_menager.cpp */,
+				9D5A22FF1E215BE00028F17B /* scene.cpp */,
+				9D5A23061E21615E0028F17B /* menu.cpp */,
 				9DD05BBD1DDB6C2800D42B7F /* game.hpp */,
 				9DD05BC01DDB81CF00D42B7F /* game_object.h */,
+				9D5A22FC1E2148520028F17B /* Scene_menager.h */,
+				9D5A22FD1E214A100028F17B /* scene.h */,
+				9D5A22FE1E2151CE0028F17B /* menu.h */,
 			);
 			name = "Flappy Man";
 			path = test;
@@ -192,7 +210,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D5A23031E215CA20028F17B /* scene_menager.cpp in Sources */,
+				9D5A23001E215BE00028F17B /* scene.cpp in Sources */,
 				9D51602A1DDA0520003221F0 /* main.cpp in Sources */,
+				9D5A23071E21615E0028F17B /* menu.cpp in Sources */,
+				9D5A23051E215DC90028F17B /* game.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
