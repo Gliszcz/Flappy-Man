@@ -46,4 +46,11 @@ dependencies: /Users/Gliszcz/GitHub/Flappy-Man/test/menu.cpp \
   /usr/local/include/allegro5/timer.h /usr/local/include/allegro5/tls.h \
   /usr/local/include/allegro5/alcompat.h \
   /usr/local/include/allegro5/platform/alosx.h \
-  /Users/Gliszcz/GitHub/Flappy-Man/test/Scene_menager.h
+  /usr/local/include/allegro5/allegro_native_dialog.h \
+  /usr/local/include/allegro5/allegro_primitives.h \
+  /usr/local/include/allegro5/allegro_image.h \
+  /usr/local/include/allegro5/allegro_ttf.h \
+  /usr/local/include/allegro5/allegro_font.h \
+  /Users/Gliszcz/GitHub/Flappy-Man/test/game_object.h \
+  /Users/Gliszcz/GitHub/Flappy-Man/test/Scene_menager.h \
+  /Users/Gliszcz/GitHub/Flappy-Man/test/game.hpp

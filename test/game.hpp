@@ -25,9 +25,7 @@ using namespace std;
 struct Game : public Scene
 {
     bool running = true;
-    bool running_game = false;
     int rand_Y;
-    int state = 0;                 // 0 - main_menu_start 1 - main_menu_exit 2 - game 3 - game_over_new_game  4 - game_over_main_menu
     const int space_obstacle = 500;
 
     vector <Game_Object*> Objects;
@@ -37,10 +35,7 @@ struct Game : public Scene
     ALLEGRO_BITMAP *superman = NULL;
     ALLEGRO_BITMAP *obstacle_up = NULL;
     ALLEGRO_BITMAP *obstacle_down = NULL;
-    ALLEGRO_BITMAP *main_menu_exit = NULL;
-    ALLEGRO_BITMAP *main_menu_new_game = NULL;
-    ALLEGRO_BITMAP *game_over_new_game = NULL;
-    ALLEGRO_BITMAP *game_over_go_to_menu = NULL;
+
     ALLEGRO_EVENT ev;
     Superman *superman_pointer;
     Score *score_pointer;
@@ -53,5 +48,7 @@ struct Game : public Scene
     void Update();
     void Draw();
     void Detect_Collision_With_Obstacle_And_Points();
+    void Reset();
+    int GetScore();
 };
 #endif /* game_hpp */

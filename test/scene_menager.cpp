@@ -15,6 +15,7 @@ Scene_Menager::Scene_Menager()
     al_install_keyboard();
     al_init_image_addon();
     al_init_font_addon();
+    al_init_ttf_addon();
     
     timer = al_create_timer(1.0 / FPS);
     window = al_create_display(window_width, window_hight);
@@ -28,7 +29,6 @@ Scene_Menager::Scene_Menager()
     menu  = new Menu();
     
     current_scene = menu;
-    next_scene = menu;
     
     game->SetTimer(timer);
     game->SetWindow(window);

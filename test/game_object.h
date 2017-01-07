@@ -138,22 +138,19 @@ struct Superman : Game_Object
 
 struct Score : Game_Object
 {
-  // ALLEGRO_FONT *font = al_create_builtin_font();// al_load_font("FlappyBirdy.ttf", 24, 0);
+    ALLEGRO_FONT *font = NULL;
     int score_int = 0;
+    int last_score;
     void Draw_Object()
     {
-        //al_draw_textf(font, al_map_rgb(0, 0, 0), x+100, y, 0, "SCORE : %d", score_int/3);
+        al_draw_textf(font, al_map_rgb(0, 0, 0), x+100, y, 0, "SCORE : %d", score_int/3);
     }
     void Update_Object()
     {
     }
     Score(ALLEGRO_BITMAP* img1,ALLEGRO_BITMAP* img2, int a, int b,  ALLEGRO_EVENT* ev) : Game_Object(img1,img2,a,b,ev)
     {
-        x=a;
-        y=b;
-        image1 = img1;
-        image2 = img2;
-        event = ev;
+        font = al_load_ttf_font("Pixeled.ttf", 40, 0);
     }
 };
 
@@ -187,7 +184,9 @@ struct Obstacle : Game_Object
             SuperMan->kolizja = true;
         
         if(SuperMan->x >= x+al_get_bitmap_width(image1)&&SuperMan->x<=x+10+al_get_bitmap_width(image1))
+        {
             ScorE->score_int += 1;
+        }
     }
     
     Obstacle(ALLEGRO_BITMAP* img1,ALLEGRO_BITMAP* img2, int a, int b,  ALLEGRO_EVENT* ev) : Game_Object(img1,img2,a,b,ev)
@@ -199,37 +198,4 @@ struct Obstacle : Game_Object
         event = ev;
     }
 };
-/*struct Main_Menu : Game_Object
-{
-    int choice = 1;
-    void Draw_Object()
-    {
-        if(choice == 1)
-            al_draw_bitmap(image1, x, y, 0);
-        else
-            al_draw_bitmap(image2, x, y, 0);
-    }
-    void Update_Object(ALLEGRO_EVENT event)
-    {
-        
-        if(event.type == ALLEGRO_EVENT_KEY_DOWN)
-            switch(event.keyboard.keycode)
-            {
-                case ALLEGRO_KEY_DOWN:
-                    choice = 2;
-                case ALLEGRO_KEY_UP:
-                    choice = 1;
-            }
-    }
-    Main_Menu(ALLEGRO_BITMAP* img1,ALLEGRO_BITMAP* img2, int a, int b,  ALLEGRO_EVENT* ev) : Game_Object(img1,img2,a,b,ev)
-    {
-        x=a;
-        y=b;
-        image1 = img1;
-        image2 = img2;
-        event = ev;
-    }
-    
-};
-*/
 #endif /* game_object_h */

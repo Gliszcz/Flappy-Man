@@ -9,6 +9,7 @@
 #include <stdio.h>
 #include "menu.h"
 #include "Scene_menager.h"
+#include "game.hpp"
 
 void Menu::GetInput()
 {
@@ -17,8 +18,37 @@ void Menu::GetInput()
 
 void Menu::Update()
 {
-    scene_menager->ChangeScene(Scene_Menager::state::Game);
+    
+    if(ev.type == ALLEGRO_EVENT_KEY_DOWN)
+        switch(ev.keyboard.keycode)
+        case ALLEGRO_KEY_ENTER:
+        {
+            scene_menager->ChangeScene(Scene_Menager::state::Game);
+            game_over = true;
+        }
 }
 void Menu::Draw()
 {
+    int score;
+    if(game_over)
+    {
+        score = ((Game*)(scene_menager->game))->GetScore();
+        al_clear_to_color(al_map_rgb(97,240,255));
+        al_draw_text(font, al_map_rgb(255, 51, 51), 660, 80, 0, "GAME OVER !");
+        al_draw_text(font_small, al_map_rgb(255, 51, 51), 660, 230, 0, "NEW GAME");
+        al_draw_textf(font_small, al_map_rgb(255, 51, 51), 1200, 230, 0, "YOUR SCORE : %d",score);
+        al_draw_text(font_small, al_map_rgb(255, 51, 51), 660, 430, 0, "SCORE");
+        al_draw_text(font_small, al_map_rgb(255, 51, 51), 660, 630, 0, "CREDITS");
+        al_draw_text(font_small, al_map_rgb(255, 51, 51), 660, 830, 0, "EXIT");
+    }
+    else
+    {
+        al_clear_to_color(al_map_rgb(97,240,255));
+        al_draw_text(font, al_map_rgb(255, 51, 51), 660, 80, 0, "FLAPPY MAN");
+        al_draw_text(font_small, al_map_rgb(255, 51, 51), 660, 230, 0, "NEW GAME");
+        al_draw_text(font_small, al_map_rgb(255, 51, 51), 660, 430, 0, "SCORE");
+        al_draw_text(font_small, al_map_rgb(255, 51, 51), 660, 630, 0, "CREDITS");
+        al_draw_text(font_small, al_map_rgb(255, 51, 51), 660, 830, 0, "EXIT");
+    }
+    al_flip_display();
 }

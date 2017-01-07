@@ -7,7 +7,7 @@
 //
 
 #include "game.hpp"
-
+#include "Scene_menager.h"
 Game::Game()                                 // INIT
 {
     Load_Files();
@@ -17,11 +17,13 @@ Game::Game()                                 // INIT
     Objects.push_back(new Ground(ground,NULL, 0, 1030, &ev));
     Objects.push_back(superman_pointer);
     Objects.push_back(score_pointer);
-    for(int i=0; i<5*space_obstacle; i+=space_obstacle)
+    int j=0;
+    for(int i=0; i<5; i++,j+=space_obstacle)
     {
         rand_Y = rand()%700-900;
-        Obstacles.push_back(new Obstacle(obstacle_up,obstacle_down, 1920+i, rand_Y, &ev));
+        Obstacles.push_back(new Obstacle(obstacle_up,obstacle_down, 1920+j, rand_Y, &ev));
     }
+    Reset();
 }
 
 void Game::Load_Files()                           // LOAD FILES
@@ -31,10 +33,7 @@ void Game::Load_Files()                           // LOAD FILES
     superman = al_load_bitmap("superman.png");
     obstacle_up = al_load_bitmap("obstacle_up.png");
     obstacle_down = al_load_bitmap("obstacle_down.png");
-    main_menu_exit = al_load_bitmap("exit.png");
-    main_menu_new_game = al_load_bitmap("new_game.png");
-    game_over_new_game = al_load_bitmap("game_over_new_game.png");
-    game_over_go_to_menu = al_load_bitmap("game_over_go_to_menu.png");
+
     
 }
 
@@ -53,6 +52,7 @@ void Game::GetInput()
 
 void Game::Update()
 {
+    Detect_Collision_With_Obstacle_And_Points();
     if (ev.type == ALLEGRO_EVENT_DISPLAY_CLOSE)
         running = false;
     
@@ -65,12 +65,8 @@ void Game::Update()
     }
     if(superman_pointer->kolizja == true)
     {
-        stringstream strs;
-        strs << score_pointer->score_int/3;
-        string tmp = strs.str();
-        const char* score_char = (char*)tmp.c_str();
-        al_show_native_message_box(window, "GAME OVER! YOUR SCORE : ", "GAME OVER !",  score_char, NULL, ALLEGRO_MESSAGEBOX_WARN);
-        running = false;
+        scene_menager->ChangeScene(Scene_Menager::state::Menu);
+        Reset();
     }
 }
 
@@ -90,4 +86,24 @@ void Game::Detect_Collision_With_Obstacle_And_Points()
 {
     for(int i=0; i<Obstacles.size(); i++)
         Obstacles[i]->Collision(superman_pointer,score_pointer);
+}
+void Game::Reset()
+{
+    for(int i=0; i<Obstacles.size(); i++)
+    {
+        rand_Y = rand()%700-900;
+        Obstacles[i]->x = 1920+i*space_obstacle;
+    }
+    superman_pointer->x = 400;
+    superman_pointer->y = 60;
+    superman_pointer->kolizja = false;
+    superman_pointer->V = 0;
+    score_pointer->last_score = score_pointer->score_int/3;
+    score_pointer->score_int = 0;
+    
+    
+}
+int Game::GetScore()
+{
+    return score_pointer->last_score;
 }
