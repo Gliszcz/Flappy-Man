@@ -19,19 +19,21 @@
 #include "game_object.h"
 #include "Scene_menager.h"
 #include "game.hpp"
+
 struct Credits : Scene
 {
-    ALLEGRO_BITMAP *arrow_pointer = nullptr;
-    ALLEGRO_EVENT ev;
+    Arrow_Pointer *arrow = nullptr;
     ALLEGRO_FONT *font = nullptr;
     ALLEGRO_FONT *font_small = nullptr;
-    Arrow_Pointer *arrow = nullptr;
+    ALLEGRO_BITMAP *arrow_pointer = nullptr;
     ALLEGRO_BITMAP *superman = nullptr;
     ALLEGRO_BITMAP *obstacle_up = nullptr;
     ALLEGRO_BITMAP *obstacle_down = nullptr;
     ALLEGRO_BITMAP *background = nullptr;
     ALLEGRO_BITMAP *ground = nullptr;
+    ALLEGRO_EVENT ev;
     bool back = false;
+    
     Credits()
     {
         font = al_load_ttf_font("Pixeled.ttf", 60, 0);
@@ -44,8 +46,8 @@ struct Credits : Scene
         ground = al_load_bitmap("ground.jpg");
         arrow =  new Arrow_Pointer(arrow_pointer,nullptr,60,105,&ev);
     }
-    void GetInput();
-    void Update();
-    void Draw();
+    void GetInput();                                                    // Getting Input
+    void Update();                                                      // Updating Credits Status (if back to main menu)
+    void Draw();                                                        // Drawing Credits
 };
 #endif /* credits_hpp */

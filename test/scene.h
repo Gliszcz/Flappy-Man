@@ -9,19 +9,22 @@
 #ifndef scene_h
 #define scene_h
 #include <allegro5/allegro.h>
+
 struct Scene_Menager;
 struct Scene
 {
+    Scene_Menager *scene_menager = nullptr;
     ALLEGRO_EVENT_QUEUE *event_queue = nullptr;
     ALLEGRO_TIMER *timer = nullptr;
     ALLEGRO_DISPLAY *window = nullptr;
+    
     virtual void GetInput() = 0;
     virtual void Update() = 0;
     virtual void Draw() = 0;
-    Scene_Menager *scene_menager = nullptr;
-    void SetEventQueue(ALLEGRO_EVENT_QUEUE *event_queue);
-    void SetTimer(ALLEGRO_TIMER *timer);
-    void SetWindow(ALLEGRO_DISPLAY *window);
-    void SetSceneMenager(Scene_Menager *scene_menager);
+    
+    void SetEventQueue(ALLEGRO_EVENT_QUEUE *event_queue);           // Setting Event Queue
+    void SetTimer(ALLEGRO_TIMER *timer);                            // Setting Timer
+    void SetWindow(ALLEGRO_DISPLAY *window);                        // Setting Window
+    void SetSceneMenager(Scene_Menager *scene_menager);             // Setting SceneMenager => to menage wchich scene should be shown
 };
 #endif /* scene_h */

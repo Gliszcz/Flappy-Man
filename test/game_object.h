@@ -8,7 +8,6 @@
 
 #ifndef game_object_h
 #define game_object_h
-#include <iostream>
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_native_dialog.h>
 #include <allegro5/allegro_primitives.h>
@@ -17,17 +16,16 @@
 #include <allegro5/allegro_font.h>
 #include <cstdlib>
 
-using namespace std;
 struct Superman;
 struct Score;
-
 struct Game_Object
 {
     ALLEGRO_BITMAP *image1;
     ALLEGRO_BITMAP *image2;
+    ALLEGRO_EVENT *event;
     float x;
     float y;
-    ALLEGRO_EVENT *event;
+    
     virtual void Draw_Object()
     {
         al_draw_bitmap(image1, x, y, 0);
@@ -157,8 +155,8 @@ struct Obstacle : Game_Object
 {
     void Draw_Object()
     {
-        al_draw_bitmap(image1, x, y, 0);
-        al_draw_bitmap(image2, x, y+1400, 0);
+        al_draw_bitmap(image1, x, y+50, 0);
+        al_draw_bitmap(image2, x, y+1450, 0);
     }
     
     void Update_Object(ALLEGRO_EVENT event)

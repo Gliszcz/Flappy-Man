@@ -18,7 +18,6 @@ void Menu::GetInput()
 
 void Menu::Update()
 {
-    
     if(ev.type == ALLEGRO_EVENT_KEY_DOWN)
         switch(ev.keyboard.keycode)
         case ALLEGRO_KEY_ENTER:
@@ -67,7 +66,6 @@ void Menu::Draw()
         al_draw_text(font_small, al_map_rgb(255, 51, 51), 660, 630, 0, "CREDITS");
         al_draw_text(font_small, al_map_rgb(255, 51, 51), 660, 830, 0, "EXIT");
         arrow->Draw_Object();
-
     }
     else
     {
@@ -82,8 +80,6 @@ void Menu::Draw()
         al_draw_text(font_small, al_map_rgb(255, 51, 51), 660, 630, 0, "CREDITS");
         al_draw_text(font_small, al_map_rgb(255, 51, 51), 660, 830, 0, "EXIT");
         arrow->Draw_Object();
-
     }
-
     al_flip_display();
 }

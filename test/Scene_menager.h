@@ -16,22 +16,23 @@ struct Scene_Menager
     Scene *game = nullptr;
     Scene *menu = nullptr;
     Scene *credits = nullptr;
+    Scene *current_scene;
     Scene *last_core = nullptr;
+    ALLEGRO_DISPLAY *window = nullptr;
+    ALLEGRO_EVENT_QUEUE *event_queue = nullptr;
+    ALLEGRO_TIMER *timer = nullptr;
+    bool running = true;
+    const int FPS = 60;
+    const int window_width = 1920;
+    const int window_hight = 1080;
     enum class state
     {
         Menu,Game,Credits,LastScore
     };
-    bool running = true;
-    ALLEGRO_DISPLAY *window = nullptr;
-    ALLEGRO_EVENT_QUEUE *event_queue = nullptr;
-    ALLEGRO_TIMER *timer = nullptr;
-    const int FPS = 60;
-    const int window_width = 1920;
-    const int window_hight = 1080;
-    Scene *current_scene;
-    Scene_Menager();
-    void Start();
-    void ChangeScene(state s);
-    ~Scene_Menager();
+    
+    Scene_Menager();                                    // Starting Scene Menager
+    void Start();                                       // Starting Current Scene (game/menu/credits/lastscore)
+    void ChangeScene(state s);                          // Changing Scene
+    ~Scene_Menager();                                   // Freeing Space After Scene Menager
 };
 #endif /* Scene_menager_h */

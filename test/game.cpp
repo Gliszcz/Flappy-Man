@@ -8,7 +8,8 @@
 
 #include "game.hpp"
 #include "Scene_menager.h"
-Game::Game()                                 // INIT
+
+Game::Game()
 {
     Load_Files();
     superman_pointer = new Superman(superman,nullptr,400,60,&ev);
@@ -26,7 +27,7 @@ Game::Game()                                 // INIT
     Reset();
 }
 
-void Game::Load_Files()                           // LOAD FILES
+void Game::Load_Files()
 {
     background = al_load_bitmap("background.jpg");
     ground = al_load_bitmap("ground.jpg");
@@ -51,6 +52,7 @@ void Game::GetInput()
 void Game::Update()
 {
     Detect_Collision_With_Obstacle_And_Points();
+    
     if (ev.type == ALLEGRO_EVENT_DISPLAY_CLOSE)
         running = false;
     
@@ -84,6 +86,7 @@ void Game::Detect_Collision_With_Obstacle_And_Points()
     for(int i=0; i<Obstacles.size(); i++)
         Obstacles[i]->Collision(superman_pointer,score_pointer);
 }
+
 void Game::Reset()
 {
     for(int i=0; i<Obstacles.size(); i++)
@@ -100,6 +103,7 @@ void Game::Reset()
     
     
 }
+
 int Game::GetScore()
 {
     return score_pointer->last_score;

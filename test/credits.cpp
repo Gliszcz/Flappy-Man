@@ -15,7 +15,6 @@ void Credits::GetInput()
 
 void Credits::Update()
 {
-    
     if(ev.type == ALLEGRO_EVENT_KEY_DOWN)
         switch(ev.keyboard.keycode)
         case ALLEGRO_KEY_ENTER:

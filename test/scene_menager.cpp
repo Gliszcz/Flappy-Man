@@ -11,6 +11,7 @@
 #include "menu.h"
 #include "credits.hpp"
 #include "last_score.hpp"
+
 Scene_Menager::Scene_Menager()
 {
     al_init();
@@ -54,6 +55,7 @@ Scene_Menager::Scene_Menager()
     last_core->SetEventQueue(event_queue);
     last_core->SetSceneMenager(this);
 }
+
 void Scene_Menager::Start()
 {
     while (running)
@@ -63,6 +65,7 @@ void Scene_Menager::Start()
         current_scene->Draw();
     }
 }
+
 void Scene_Menager::ChangeScene(state s)
 {
     if(s == state::Menu)
