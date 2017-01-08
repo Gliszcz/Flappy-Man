@@ -38,7 +38,7 @@ void Menu::Update()
                 break;
                 case 2:
                 {
-                    scene_menager->running = false;
+                    scene_menager->ChangeScene(Scene_Menager::state::Credits);
                 }
                     break;
                 case 3:
@@ -76,5 +76,6 @@ void Menu::Draw()
         arrow->Draw_Object();
 
     }
+
     al_flip_display();
 }

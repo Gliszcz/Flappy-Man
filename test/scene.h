@@ -25,8 +25,5 @@ struct Scene
     void SetTimer(ALLEGRO_TIMER *timer);
     void SetWindow(ALLEGRO_DISPLAY *window);
     void SetSceneMenager(Scene_Menager *scene_menager);
-
-
-
 };
 #endif /* scene_h */

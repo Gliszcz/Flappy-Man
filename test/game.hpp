@@ -27,7 +27,6 @@ struct Game : public Scene
     bool running = true;
     int rand_Y;
     const int space_obstacle = 500;
-
     vector <Game_Object*> Objects;
     vector <Game_Object*> Obstacles;
     ALLEGRO_BITMAP *background = NULL;
@@ -35,7 +34,6 @@ struct Game : public Scene
     ALLEGRO_BITMAP *superman = NULL;
     ALLEGRO_BITMAP *obstacle_up = NULL;
     ALLEGRO_BITMAP *obstacle_down = NULL;
-
     ALLEGRO_EVENT ev;
     Superman *superman_pointer;
     Score *score_pointer;

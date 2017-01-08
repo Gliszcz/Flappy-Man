@@ -9,6 +9,7 @@
 #include "Scene_menager.h"
 #include "game.hpp"
 #include "menu.h"
+#include "credits.hpp"
 Scene_Menager::Scene_Menager()
 {
     al_init();
@@ -27,6 +28,7 @@ Scene_Menager::Scene_Menager()
     
     game = new Game();
     menu  = new Menu();
+    credits = new Credits();
     
     current_scene = menu;
     
@@ -40,17 +42,20 @@ Scene_Menager::Scene_Menager()
     menu->SetEventQueue(event_queue);
     menu->SetSceneMenager(this);
     
+    credits->SetTimer(timer);
+    credits->SetWindow(window);
+    credits->SetEventQueue(event_queue);
+    credits->SetSceneMenager(this);
+    
 }
 void Scene_Menager::Start()
 {
     while (running)
     {
-        
         current_scene->GetInput();
         current_scene->Update();
         current_scene->Draw();
     }
-    
 }
 void Scene_Menager::ChangeScene(state s)
 {
@@ -58,6 +63,8 @@ void Scene_Menager::ChangeScene(state s)
         current_scene = menu;
     else if(s == state::Game)
         current_scene = game;
+    else if(s == state::Credits)
+        current_scene = credits;
 }
 
 Scene_Menager::~Scene_Menager()
@@ -65,4 +72,5 @@ Scene_Menager::~Scene_Menager()
     al_destroy_display(window);
     delete game;
     delete menu;
+    delete credits;
 }

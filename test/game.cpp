@@ -58,9 +58,8 @@ void Game::Update()
         Objects[i]-> Update_Object(ev);
     
     for(int i=0; i<Obstacles.size(); i++)
-    {
         Obstacles[i]->Update_Object(ev);
-    }
+    
     if(superman_pointer->kolizja == true)
     {
         scene_menager->ChangeScene(Scene_Menager::state::Menu);
