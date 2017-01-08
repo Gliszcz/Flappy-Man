@@ -25,6 +25,10 @@ struct LastScore : Scene
     ALLEGRO_EVENT ev;
     ALLEGRO_FONT *font = nullptr;
     ALLEGRO_FONT *font_small = nullptr;
+    ALLEGRO_BITMAP *table = nullptr;
+    ALLEGRO_BITMAP *background = nullptr;
+    ALLEGRO_BITMAP *ground = nullptr;
+    ALLEGRO_BITMAP *superman = nullptr;
     Arrow_Pointer *arrow = nullptr;
     bool back = false;
     LastScore()
@@ -32,6 +36,10 @@ struct LastScore : Scene
         font = al_load_ttf_font("Pixeled.ttf", 60, 0);
         font_small = al_load_ttf_font("Pixeled.ttf", 40, 0);
         arrow_pointer = al_load_bitmap("arrow_pointer.png");
+        superman = al_load_bitmap("superman.png");
+        background = al_load_bitmap("background.jpg");
+        ground = al_load_bitmap("ground.jpg");
+        table = al_load_bitmap("table.png");
         arrow =  new Arrow_Pointer(arrow_pointer,NULL,60,105,&ev);
     }
     void GetInput();
