@@ -10,6 +10,7 @@
 #include "game.hpp"
 #include "menu.h"
 #include "credits.hpp"
+#include "last_score.hpp"
 Scene_Menager::Scene_Menager()
 {
     al_init();
@@ -29,6 +30,7 @@ Scene_Menager::Scene_Menager()
     game = new Game();
     menu  = new Menu();
     credits = new Credits();
+    
     
     current_scene = menu;
     

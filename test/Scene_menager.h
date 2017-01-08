@@ -16,9 +16,10 @@ struct Scene_Menager
     Scene *game = nullptr;
     Scene *menu = nullptr;
     Scene *credits = nullptr;
+    Scene *last_core = nullptr;
     enum class state
     {
-        Menu,Game,Credits
+        Menu,Game,Credits,LastScore
     };
     bool running = true;
     ALLEGRO_DISPLAY *window = NULL;

@@ -32,7 +32,7 @@ struct Credits : Scene
         font = al_load_ttf_font("Pixeled.ttf", 60, 0);
         font_small = al_load_ttf_font("Pixeled.ttf", 40, 0);
         arrow_pointer = al_load_bitmap("arrow_pointer.png");
-        arrow =  new Arrow_Pointer(arrow_pointer,NULL,600,255,&ev);
+        arrow =  new Arrow_Pointer(arrow_pointer,NULL,60,105,&ev);
     }
     void GetInput();
     void Update();

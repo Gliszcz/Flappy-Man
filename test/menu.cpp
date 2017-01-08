@@ -33,14 +33,14 @@ void Menu::Update()
                 break;
                 case 1:
                 {
-                    scene_menager->running = false;
+                    scene_menager->ChangeScene(Scene_Menager::state::LastScore);
                 }
                 break;
                 case 2:
                 {
                     scene_menager->ChangeScene(Scene_Menager::state::Credits);
                 }
-                    break;
+                break;
                 case 3:
                 {
                     scene_menager->running = false;
