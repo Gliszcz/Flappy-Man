@@ -29,11 +29,11 @@ struct Game : public Scene
     const int space_obstacle = 500;
     vector <Game_Object*> Objects;
     vector <Game_Object*> Obstacles;
-    ALLEGRO_BITMAP *background = NULL;
-    ALLEGRO_BITMAP *ground = NULL;
-    ALLEGRO_BITMAP *superman = NULL;
-    ALLEGRO_BITMAP *obstacle_up = NULL;
-    ALLEGRO_BITMAP *obstacle_down = NULL;
+    ALLEGRO_BITMAP *background = nullptr;
+    ALLEGRO_BITMAP *ground = nullptr;
+    ALLEGRO_BITMAP *superman = nullptr;
+    ALLEGRO_BITMAP *obstacle_up = nullptr;
+    ALLEGRO_BITMAP *obstacle_down = nullptr;
     ALLEGRO_EVENT ev;
     Superman *superman_pointer;
     Score *score_pointer;

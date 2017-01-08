@@ -137,7 +137,7 @@ struct Superman : Game_Object
 
 struct Score : Game_Object
 {
-    ALLEGRO_FONT *font = NULL;
+    ALLEGRO_FONT *font = nullptr;
     int score_int = 0;
     int last_score;
     void Draw_Object()
@@ -205,21 +205,29 @@ struct Arrow_Pointer :Game_Object
     
     void Update_Object(ALLEGRO_EVENT event)
     {
+     
         if(event.type == ALLEGRO_EVENT_KEY_DOWN)
             switch(event.keyboard.keycode)
             {
                 case ALLEGRO_KEY_DOWN:
                 {
-                    y+=200;
-                    choice++;
-                    break;
+                    if(y<=800)
+                    {
+                        y+=200;
+                        choice++;
+                    }
                 }
+                break;
+                if(y>=600)
                 case ALLEGRO_KEY_UP:
                 {
-                    y-=200;
-                    choice--;
-                    break;
+                    if(y>=400)
+                    {
+                        y-=200;
+                        choice--;
+                    }
                 }
+                break;
             }
     }
     Arrow_Pointer(ALLEGRO_BITMAP* img1,ALLEGRO_BITMAP* img2, int a, int b,  ALLEGRO_EVENT* ev) : Game_Object(img1,img2,a,b,ev)

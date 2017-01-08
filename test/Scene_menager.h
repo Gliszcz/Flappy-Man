@@ -22,9 +22,9 @@ struct Scene_Menager
         Menu,Game,Credits,LastScore
     };
     bool running = true;
-    ALLEGRO_DISPLAY *window = NULL;
-    ALLEGRO_EVENT_QUEUE *event_queue = NULL;
-    ALLEGRO_TIMER *timer = NULL;
+    ALLEGRO_DISPLAY *window = nullptr;
+    ALLEGRO_EVENT_QUEUE *event_queue = nullptr;
+    ALLEGRO_TIMER *timer = nullptr;
     const int FPS = 60;
     const int window_width = 1920;
     const int window_hight = 1080;

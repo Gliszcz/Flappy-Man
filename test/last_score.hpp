@@ -6,8 +6,8 @@
 //  Copyright © 2017 Adam Gliszczński. All rights reserved.
 //
 
-#ifndef credits_hpp
-#define credits_hpp
+#ifndef last_score_hpp
+#define last_score_hpp
 #include <stdio.h>
 #include "scene.h"
 #include <allegro5/allegro.h>
@@ -21,11 +21,11 @@
 #include "game.hpp"
 struct LastScore : Scene
 {
-    ALLEGRO_BITMAP *arrow_pointer = NULL;
+    ALLEGRO_BITMAP *arrow_pointer = nullptr;
     ALLEGRO_EVENT ev;
-    ALLEGRO_FONT *font = NULL;
-    ALLEGRO_FONT *font_small = NULL;
-    Arrow_Pointer *arrow = NULL;
+    ALLEGRO_FONT *font = nullptr;
+    ALLEGRO_FONT *font_small = nullptr;
+    Arrow_Pointer *arrow = nullptr;
     bool back = false;
     LastScore()
     {

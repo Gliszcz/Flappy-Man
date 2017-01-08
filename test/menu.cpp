@@ -55,10 +55,14 @@ void Menu::Draw()
     if(game_over)
     {
         score = ((Game*)(scene_menager->game))->GetScore();
-        al_clear_to_color(al_map_rgb(97,240,255));
+        al_draw_bitmap(background, 0, 0, 0);
+        al_draw_bitmap(ground,0,1030,0);
+        al_draw_bitmap(obstacle_up,1600,-800,0);
+        al_draw_bitmap(obstacle_down,1600,600,0);
+        al_draw_bitmap(superman, 80, 400, 0);
         al_draw_text(font, al_map_rgb(255, 51, 51), 660, 80, 0, "GAME OVER !");
         al_draw_text(font_small, al_map_rgb(255, 51, 51), 660, 230, 0, "NEW GAME");
-        al_draw_textf(font_small, al_map_rgb(255, 51, 51), 1200, 230, 0, "YOUR SCORE : %d",score);
+        al_draw_textf(font_small, al_map_rgb(0, 0, 0), 1185, 400, 0, "YOUR SCORE : %d",score);
         al_draw_text(font_small, al_map_rgb(255, 51, 51), 660, 430, 0, "SCORE");
         al_draw_text(font_small, al_map_rgb(255, 51, 51), 660, 630, 0, "CREDITS");
         al_draw_text(font_small, al_map_rgb(255, 51, 51), 660, 830, 0, "EXIT");
@@ -67,7 +71,11 @@ void Menu::Draw()
     }
     else
     {
-        al_clear_to_color(al_map_rgb(97,240,255));
+        al_draw_bitmap(background, 0, 0, 0);
+        al_draw_bitmap(ground,0,1030,0);
+        al_draw_bitmap(obstacle_up,1600,-800,0);
+        al_draw_bitmap(obstacle_down,1600,600,0);
+        al_draw_bitmap(superman, 80, 400, 0);
         al_draw_text(font, al_map_rgb(255, 51, 51), 660, 80, 0, "FLAPPY MAN");
         al_draw_text(font_small, al_map_rgb(255, 51, 51), 660, 230, 0, "NEW GAME");
         al_draw_text(font_small, al_map_rgb(255, 51, 51), 660, 430, 0, "SCORE");

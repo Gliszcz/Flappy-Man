@@ -30,7 +30,7 @@ Scene_Menager::Scene_Menager()
     game = new Game();
     menu  = new Menu();
     credits = new Credits();
-    
+    last_core = new LastScore();
     
     current_scene = menu;
     
@@ -49,6 +49,10 @@ Scene_Menager::Scene_Menager()
     credits->SetEventQueue(event_queue);
     credits->SetSceneMenager(this);
     
+    last_core->SetTimer(timer);
+    last_core->SetWindow(window);
+    last_core->SetEventQueue(event_queue);
+    last_core->SetSceneMenager(this);
 }
 void Scene_Menager::Start()
 {
@@ -67,6 +71,8 @@ void Scene_Menager::ChangeScene(state s)
         current_scene = game;
     else if(s == state::Credits)
         current_scene = credits;
+    else if (s == state::LastScore)
+        current_scene = last_core;
 }
 
 Scene_Menager::~Scene_Menager()

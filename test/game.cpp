@@ -11,10 +11,10 @@
 Game::Game()                                 // INIT
 {
     Load_Files();
-    superman_pointer = new Superman(superman,NULL,400,60,&ev);
-    score_pointer = new Score(NULL,NULL,30,30,&ev);
-    Objects.push_back(new  Background(background,NULL, 0, 0, &ev));
-    Objects.push_back(new Ground(ground,NULL, 0, 1030, &ev));
+    superman_pointer = new Superman(superman,nullptr,400,60,&ev);
+    score_pointer = new Score(nullptr,nullptr,30,30,&ev);
+    Objects.push_back(new  Background(background,nullptr, 0, 0, &ev));
+    Objects.push_back(new Ground(ground,nullptr, 0, 1030, &ev));
     Objects.push_back(superman_pointer);
     Objects.push_back(score_pointer);
     int j=0;
