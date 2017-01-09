@@ -40,8 +40,8 @@ struct Credits : Scene
         font_small = al_load_ttf_font("Pixeled.ttf", 35, 0);
         arrow_pointer = al_load_bitmap("arrow_pointer.png");
         superman = al_load_bitmap("superman.png");
-        obstacle_up =al_load_bitmap("obstacle_up.png");
-        obstacle_down =al_load_bitmap("obstacle_down.png");
+        obstacle_up = al_load_bitmap("obstacle_up.png");
+        obstacle_down = al_load_bitmap("obstacle_down.png");
         background = al_load_bitmap("background.jpg");
         ground = al_load_bitmap("ground.jpg");
         arrow =  new Arrow_Pointer(arrow_pointer,nullptr,60,105,&ev);

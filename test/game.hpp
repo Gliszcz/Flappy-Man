@@ -42,7 +42,7 @@ struct Game : public Scene
     void CleanUp();                                         // Freeing memory
     void GetInput();                                        // Getting Input From Keyboard
     void Update();                                          // Updating Objects Atributes
-    void Draw();                                            // Drawin Objects
+    void Draw();                                            // Drawing Objects
     void Detect_Collision_With_Obstacle_And_Points();       // Detecting Collisions & Counting Points
     void Reset();                                           // Game Reset (score, posiotion, status)
     int GetScore();

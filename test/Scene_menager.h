@@ -9,6 +9,8 @@
 #ifndef Scene_menager_h
 #define Scene_menager_h
 #include <allegro5/allegro.h>
+#include <allegro5/allegro_audio.h>
+#include <allegro5/allegro_acodec.h>
 #include "scene.h"
 
 struct Scene_Menager
@@ -18,6 +20,7 @@ struct Scene_Menager
     Scene *credits = nullptr;
     Scene *current_scene;
     Scene *last_core = nullptr;
+    ALLEGRO_SAMPLE *sample1 = nullptr;
     ALLEGRO_DISPLAY *window = nullptr;
     ALLEGRO_EVENT_QUEUE *event_queue = nullptr;
     ALLEGRO_TIMER *timer = nullptr;
@@ -29,7 +32,6 @@ struct Scene_Menager
     {
         Menu,Game,Credits,LastScore
     };
-    
     Scene_Menager();                                    // Starting Scene Menager
     void Start();                                       // Starting Current Scene (game/menu/credits/lastscore)
     void ChangeScene(state s);                          // Changing Scene

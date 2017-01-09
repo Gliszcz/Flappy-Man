@@ -29,8 +29,11 @@ void LastScore::Draw()
     if(!back)
     {
         al_draw_bitmap(background, 0, 0, 0);
-        al_draw_bitmap(table, 0, 0, 0);
         al_draw_bitmap(ground, 0, 1030, 0);
+        al_draw_bitmap(obstacle_up,1600,-800,0);
+        al_draw_bitmap(obstacle_down,1600,600,0);
+        al_draw_bitmap(superman, 80, 400, 0);
+        al_draw_bitmap(table, 0, 0, 0);
         al_draw_text(font_small, al_map_rgb(255, 51, 51), 100, 80, 0, "BACK");
         al_draw_bitmap(arrow_pointer, 50, 105, 0);
         al_draw_text(font, al_map_rgb(255, 51, 51), 460, 180, 0, "YOUR LAST 5 SCORES : ");

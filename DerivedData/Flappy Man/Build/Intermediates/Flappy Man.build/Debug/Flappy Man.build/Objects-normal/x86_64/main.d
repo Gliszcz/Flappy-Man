@@ -45,4 +45,6 @@ dependencies: /Users/Gliszcz/GitHub/Flappy-Man/test/main.cpp \
   /usr/local/include/allegro5/timer.h /usr/local/include/allegro5/tls.h \
   /usr/local/include/allegro5/alcompat.h \
   /usr/local/include/allegro5/platform/alosx.h \
+  /usr/local/include/allegro5/allegro_audio.h \
+  /usr/local/include/allegro5/allegro_acodec.h \
   /Users/Gliszcz/GitHub/Flappy-Man/test/scene.h

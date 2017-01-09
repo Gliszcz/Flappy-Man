@@ -27,7 +27,7 @@ Scene_Menager::Scene_Menager()
     al_register_event_source(event_queue, al_get_timer_event_source(timer));
     al_register_event_source(event_queue, al_get_display_event_source(window));
     al_start_timer(timer);
-    
+
     game = new Game();
     menu  = new Menu();
     credits = new Credits();

@@ -53,4 +53,6 @@ dependencies: /Users/Gliszcz/GitHub/Flappy-Man/test/last_score.cpp \
   /usr/local/include/allegro5/allegro_font.h \
   /Users/Gliszcz/GitHub/Flappy-Man/test/game_object.h \
   /Users/Gliszcz/GitHub/Flappy-Man/test/Scene_menager.h \
+  /usr/local/include/allegro5/allegro_audio.h \
+  /usr/local/include/allegro5/allegro_acodec.h \
   /Users/Gliszcz/GitHub/Flappy-Man/test/game.hpp

@@ -30,6 +30,8 @@ struct LastScore : Scene
     ALLEGRO_BITMAP *ground = nullptr;
     ALLEGRO_BITMAP *superman = nullptr;
     ALLEGRO_BITMAP *arrow_pointer = nullptr;
+    ALLEGRO_BITMAP *obstacle_up = nullptr;
+    ALLEGRO_BITMAP *obstacle_down = nullptr;
     ALLEGRO_EVENT ev;
     bool back = false;
     
@@ -42,6 +44,8 @@ struct LastScore : Scene
         background = al_load_bitmap("background.jpg");
         ground = al_load_bitmap("ground.jpg");
         table = al_load_bitmap("table.png");
+        obstacle_up = al_load_bitmap("obstacle_up.png");
+        obstacle_down = al_load_bitmap("obstacle_down.png");
         arrow =  new Arrow_Pointer(arrow_pointer,NULL,60,105,&ev);
     }
     void GetInput();                                                    // Getting Input
