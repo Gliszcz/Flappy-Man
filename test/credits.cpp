@@ -35,8 +35,8 @@ void Credits::Draw()
         al_draw_bitmap(superman, 80, 400, 0);
         al_draw_text(font, al_map_rgb(255, 51, 51), 460, 180, 0, "SPECIAL THANKS TO : ");
         al_draw_text(font_small, al_map_rgb(255, 51, 51), 460, 330, 0, "-Hubet Jasudowicz");
-        al_draw_text(font_small, al_map_rgb(255, 51, 51), 460, 430, 0, "-Stack Overflow");
-        al_draw_text(font_small, al_map_rgb(255, 51, 51), 460, 530, 0, "-Wikipedia");
+        al_draw_text(font_small, al_map_rgb(255, 51, 51), 460, 430, 0, "-Julian Jarzabkowski");
+        al_draw_text(font_small, al_map_rgb(255, 51, 51), 460, 530, 0, "-Stack Overflow");
         al_draw_text(font_small, al_map_rgb(255, 51, 51), 460, 630, 0, "-Google");
         al_draw_text(font_small, al_map_rgb(255, 51, 51), 460, 730, 0, "-RedBull");
         al_draw_bitmap(arrow_pointer, 50, 105, 0);
