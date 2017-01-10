@@ -27,6 +27,7 @@ Scene_Menager::Scene_Menager()
     al_register_event_source(event_queue, al_get_timer_event_source(timer));
     al_register_event_source(event_queue, al_get_display_event_source(window));
     al_start_timer(timer);
+    sample = al_load_sample("FlipFlap.wav");
 
     game = new Game();
     menu  = new Menu();
@@ -34,6 +35,7 @@ Scene_Menager::Scene_Menager()
     last_core = new LastScore();
     
     current_scene = menu;
+    al_play_sample(sample, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_LOOP, NULL);
     
     game->SetTimer(timer);
     game->SetWindow(window);
@@ -60,6 +62,7 @@ void Scene_Menager::Start()
 {
     while (running)
     {
+        
         current_scene->GetInput();
         current_scene->Update();
         current_scene->Draw();

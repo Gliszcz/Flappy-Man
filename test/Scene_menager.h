@@ -20,7 +20,7 @@ struct Scene_Menager
     Scene *credits = nullptr;
     Scene *current_scene;
     Scene *last_core = nullptr;
-    ALLEGRO_SAMPLE *sample1 = nullptr;
+    ALLEGRO_SAMPLE *sample = nullptr;
     ALLEGRO_DISPLAY *window = nullptr;
     ALLEGRO_EVENT_QUEUE *event_queue = nullptr;
     ALLEGRO_TIMER *timer = nullptr;
