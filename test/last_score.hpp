@@ -46,7 +46,7 @@ struct LastScore : Scene
         table = al_load_bitmap("table.png");
         obstacle_up = al_load_bitmap("obstacle_up.png");
         obstacle_down = al_load_bitmap("obstacle_down.png");
-        arrow =  new Arrow_Pointer(arrow_pointer,NULL,60,105,&ev);
+        arrow =  new Arrow_Pointer(arrow_pointer,NULL,60,105,&ev,nullptr);
     }
     void GetInput();                                                    // Getting Input
     void Update();                                                      // Updating Last 5 Score Status

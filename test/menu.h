@@ -43,7 +43,7 @@ struct Menu : Scene
         obstacle_down =al_load_bitmap("obstacle_down.png");
         background = al_load_bitmap("background.jpg");
         ground = al_load_bitmap("ground.jpg");
-        arrow =  new Arrow_Pointer(arrow_pointer,nullptr,600,255,&ev);
+        arrow =  new Arrow_Pointer(arrow_pointer,nullptr,600,255,&ev,nullptr);
     }
     void GetInput();                                                        // Getting Input
     void Update();                                                          // Updating Menu Status

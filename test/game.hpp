@@ -32,6 +32,7 @@ struct Game : public Scene
     ALLEGRO_BITMAP *superman = nullptr;
     ALLEGRO_BITMAP *obstacle_up = nullptr;
     ALLEGRO_BITMAP *obstacle_down = nullptr;
+    ALLEGRO_SAMPLE *sample = nullptr;
     ALLEGRO_EVENT ev;
     std::vector <Game_Object*> Objects;
     std::vector <Game_Object*> Obstacles;

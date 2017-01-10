@@ -25,6 +25,7 @@ struct Game_Object
     ALLEGRO_BITMAP *image1;
     ALLEGRO_BITMAP *image2;
     ALLEGRO_EVENT *event;
+    ALLEGRO_SAMPLE *sample;
     float x;
     float y;
     
@@ -41,13 +42,14 @@ struct Game_Object
     {
     }
 
-    Game_Object(ALLEGRO_BITMAP* img1,ALLEGRO_BITMAP* img2, int a, int b, ALLEGRO_EVENT* ev)
+    Game_Object(ALLEGRO_BITMAP* img1,ALLEGRO_BITMAP* img2, int a, int b, ALLEGRO_EVENT* ev,ALLEGRO_SAMPLE* samp)
     {
         x=a;
         y=b;
         image1 = img1;
         image2 = img2;
         event = ev;
+        sample = samp;
     }
 };
 
@@ -66,13 +68,14 @@ struct Ground : Game_Object
             x=0;
     }
     
-    Ground(ALLEGRO_BITMAP* img1,ALLEGRO_BITMAP* img2, int a, int b, ALLEGRO_EVENT* ev) : Game_Object(img1,img2,a,b,ev)
+    Ground(ALLEGRO_BITMAP* img1,ALLEGRO_BITMAP* img2, int a, int b, ALLEGRO_EVENT* ev,ALLEGRO_SAMPLE* samp) : Game_Object(img1,img2,a,b,ev,samp)
     {
         x=a;
         y=b;
         image1 = img1;
         image2 = img2;
         event = ev;
+        sample = samp;
     }
 };
 
@@ -91,13 +94,14 @@ struct Background : Game_Object
             x=0;
     }
     
-    Background(ALLEGRO_BITMAP* img1,ALLEGRO_BITMAP* img2, int a, int b, ALLEGRO_EVENT* ev) : Game_Object(img1,img2,a,b,ev)
+    Background(ALLEGRO_BITMAP* img1,ALLEGRO_BITMAP* img2, int a, int b, ALLEGRO_EVENT* ev,ALLEGRO_SAMPLE* samp) : Game_Object(img1,img2,a,b,ev,samp)
     {
         x=a;
         y=b;
         image1 = img1;
         image2 = img2;
         event = ev;
+        sample = samp;
     }
 };
 
@@ -130,13 +134,14 @@ struct Superman : Game_Object
             kolizja = true;
     }
 
-    Superman(ALLEGRO_BITMAP* img1,ALLEGRO_BITMAP* img2, int a, int b, ALLEGRO_EVENT* ev) : Game_Object(img1,img2,a,b,ev)
+    Superman(ALLEGRO_BITMAP* img1,ALLEGRO_BITMAP* img2, int a, int b, ALLEGRO_EVENT* ev,ALLEGRO_SAMPLE* samp) : Game_Object(img1,img2,a,b,ev,samp)
     {
         x=a;
         y=b;
         image1 = img1;
         image2 = img2;
         event = ev;
+        sample = samp;
     }
 };
 
@@ -152,7 +157,7 @@ struct Score : Game_Object
     void Update_Object()
     {
     }
-    Score(ALLEGRO_BITMAP* img1,ALLEGRO_BITMAP* img2, int a, int b,  ALLEGRO_EVENT* ev) : Game_Object(img1,img2,a,b,ev)
+    Score(ALLEGRO_BITMAP* img1,ALLEGRO_BITMAP* img2, int a, int b, ALLEGRO_EVENT* ev,ALLEGRO_SAMPLE* samp) : Game_Object(img1,img2,a,b,ev,samp)
     {
         font = al_load_ttf_font("Pixeled.ttf", 40, 0);
     }
@@ -191,13 +196,14 @@ struct Obstacle : Game_Object
             ScorE->score_int += 1;
     }
     
-    Obstacle(ALLEGRO_BITMAP* img1,ALLEGRO_BITMAP* img2, int a, int b,  ALLEGRO_EVENT* ev) : Game_Object(img1,img2,a,b,ev)
+    Obstacle(ALLEGRO_BITMAP* img1,ALLEGRO_BITMAP* img2, int a, int b, ALLEGRO_EVENT* ev,ALLEGRO_SAMPLE* samp) : Game_Object(img1,img2,a,b,ev,samp)
     {
         x=a;
         y=b;
         image1 = img1;
         image2 = img2;
         event = ev;
+        sample = samp;
     }
 };
 struct Arrow_Pointer :Game_Object
@@ -235,13 +241,14 @@ struct Arrow_Pointer :Game_Object
                 break;
             }
     }
-    Arrow_Pointer(ALLEGRO_BITMAP* img1,ALLEGRO_BITMAP* img2, int a, int b,  ALLEGRO_EVENT* ev) : Game_Object(img1,img2,a,b,ev)
+    Arrow_Pointer(ALLEGRO_BITMAP* img1,ALLEGRO_BITMAP* img2, int a, int b, ALLEGRO_EVENT* ev,ALLEGRO_SAMPLE* samp) : Game_Object(img1,img2,a,b,ev,samp)
     {
         x=a;
         y=b;
         image1 = img1;
         image2 = img2;
         event = ev;
+        sample = samp;
     }
 };
 #endif /* game_object_h */

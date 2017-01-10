@@ -12,17 +12,17 @@
 Game::Game()
 {
     Load_Files();
-    superman_pointer = new Superman(superman,nullptr,400,60,&ev);
-    score_pointer = new Score(nullptr,nullptr,30,30,&ev);
-    Objects.push_back(new  Background(background,nullptr, 0, 0, &ev));
-    Objects.push_back(new Ground(ground,nullptr, 0, 1030, &ev));
+    superman_pointer = new Superman(superman,nullptr,400,60,&ev,sample);
+    score_pointer = new Score(nullptr,nullptr,30,30,&ev,nullptr);
+    Objects.push_back(new  Background(background,nullptr, 0, 0, &ev,nullptr));
+    Objects.push_back(new Ground(ground,nullptr, 0, 1030, &ev,nullptr));
     Objects.push_back(superman_pointer);
     Objects.push_back(score_pointer);
     int j=0;
     for(int i=0; i<5; i++,j+=space_obstacle)
     {
         rand_Y = rand()%700-900;
-        Obstacles.push_back(new Obstacle(obstacle_up,obstacle_down, 1920+j, rand_Y, &ev));
+        Obstacles.push_back(new Obstacle(obstacle_up,obstacle_down, 1920+j, rand_Y, &ev,nullptr));
     }
     Reset();
 }
@@ -34,6 +34,7 @@ void Game::Load_Files()
     superman = al_load_bitmap("superman.png");
     obstacle_up = al_load_bitmap("obstacle_up.png");
     obstacle_down = al_load_bitmap("obstacle_down.png");
+    sample = al_load_sample("jump.wav");
 
 }
 

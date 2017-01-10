@@ -44,7 +44,7 @@ struct Credits : Scene
         obstacle_down = al_load_bitmap("obstacle_down.png");
         background = al_load_bitmap("background.jpg");
         ground = al_load_bitmap("ground.jpg");
-        arrow =  new Arrow_Pointer(arrow_pointer,nullptr,60,105,&ev);
+        arrow =  new Arrow_Pointer(arrow_pointer,nullptr,60,105,&ev,nullptr);
     }
     void GetInput();                                                    // Getting Input
     void Update();                                                      // Updating Credits Status (if back to main menu)
