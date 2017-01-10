@@ -11,6 +11,8 @@
 #include "menu.h"
 #include "credits.hpp"
 #include "last_score.hpp"
+#include <allegro5/allegro_acodec.h>
+#include <allegro5/allegro_audio.h>
 
 Scene_Menager::Scene_Menager()
 {
@@ -19,6 +21,9 @@ Scene_Menager::Scene_Menager()
     al_init_image_addon();
     al_init_font_addon();
     al_init_ttf_addon();
+    al_init_acodec_addon();
+    al_install_audio();
+    al_reserve_samples(1);
     
     timer = al_create_timer(1.0 / FPS);
     window = al_create_display(window_width, window_hight);
@@ -83,6 +88,7 @@ void Scene_Menager::ChangeScene(state s)
 
 Scene_Menager::~Scene_Menager()
 {
+    al_destroy_sample(sample);
     al_destroy_display(window);
     delete game;
     delete menu;

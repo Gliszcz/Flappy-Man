@@ -14,6 +14,8 @@
 #include <allegro5/allegro_image.h>
 #include <allegro5/allegro_ttf.h>
 #include <allegro5/allegro_font.h>
+#include <allegro5/allegro_audio.h>
+#include <allegro5/allegro_acodec.h>
 #include <cstdlib>
 
 struct Superman;
@@ -103,6 +105,7 @@ struct Superman : Game_Object
 {
     bool kolizja = false;
     int V=0;
+    ALLEGRO_SAMPLE *jump_sample = nullptr;
     void Draw_Object()
     {
         al_draw_bitmap(image1, x, y, 0);
@@ -110,6 +113,7 @@ struct Superman : Game_Object
     
     void Update_Object(ALLEGRO_EVENT event)
     {
+        jump_sample = al_load_sample("jump.wav");
         y+=V;
         V+=1;
 
@@ -117,7 +121,10 @@ struct Superman : Game_Object
             switch(event.keyboard.keycode)
             {
                case ALLEGRO_KEY_SPACE:
+                {
                     V=-16;
+                    al_play_sample(jump_sample, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
+                }
             }
         if((y >= 1048 - al_get_bitmap_height(image1)) && (y<=1040))
             kolizja = true;

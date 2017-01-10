@@ -50,8 +50,8 @@ dependencies: /Users/Gliszcz/GitHub/Flappy-Man/test/game.cpp \
   /usr/local/include/allegro5/allegro_image.h \
   /usr/local/include/allegro5/allegro_ttf.h \
   /usr/local/include/allegro5/allegro_font.h \
+  /usr/local/include/allegro5/allegro_audio.h \
+  /usr/local/include/allegro5/allegro_acodec.h \
   /Users/Gliszcz/GitHub/Flappy-Man/test/game_object.h \
   /Users/Gliszcz/GitHub/Flappy-Man/test/scene.h \
-  /Users/Gliszcz/GitHub/Flappy-Man/test/Scene_menager.h \
-  /usr/local/include/allegro5/allegro_audio.h \
-  /usr/local/include/allegro5/allegro_acodec.h
+  /Users/Gliszcz/GitHub/Flappy-Man/test/Scene_menager.h

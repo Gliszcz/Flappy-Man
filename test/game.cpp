@@ -34,6 +34,7 @@ void Game::Load_Files()
     superman = al_load_bitmap("superman.png");
     obstacle_up = al_load_bitmap("obstacle_up.png");
     obstacle_down = al_load_bitmap("obstacle_down.png");
+
 }
 
 void Game::CleanUp()
