@@ -31,6 +31,9 @@ struct Menu : Scene
     ALLEGRO_BITMAP *background = nullptr;
     ALLEGRO_BITMAP *ground = nullptr;
     ALLEGRO_EVENT ev;
+    ALLEGRO_BITMAP *sound_ON = nullptr;
+    ALLEGRO_BITMAP *sound_OFF = nullptr;
+    bool mute = false;
     bool game_over = false;
 
     Menu()
@@ -44,6 +47,8 @@ struct Menu : Scene
         background = al_load_bitmap("background.jpg");
         ground = al_load_bitmap("ground.jpg");
         arrow =  new Arrow_Pointer(arrow_pointer,nullptr,600,255,&ev,nullptr);
+        sound_ON = al_load_bitmap("sound_on.png");
+        sound_OFF = al_load_bitmap("sound_off.png");
     }
     void GetInput();                                                        // Getting Input
     void Update();                                                          // Updating Menu Status

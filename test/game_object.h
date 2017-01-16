@@ -216,7 +216,6 @@ struct Arrow_Pointer :Game_Object
     
     void Update_Object(ALLEGRO_EVENT event)
     {
-     
         if(event.type == ALLEGRO_EVENT_KEY_DOWN)
             switch(event.keyboard.keycode)
             {

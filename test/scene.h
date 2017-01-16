@@ -18,6 +18,7 @@ struct Scene
     ALLEGRO_TIMER *timer = nullptr;
     ALLEGRO_DISPLAY *window = nullptr;
     
+    
     virtual void GetInput() = 0;
     virtual void Update() = 0;
     virtual void Draw() = 0;

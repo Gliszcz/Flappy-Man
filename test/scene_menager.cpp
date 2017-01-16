@@ -24,7 +24,6 @@ Scene_Menager::Scene_Menager()
     al_init_acodec_addon();
     al_install_audio();
     al_reserve_samples(1);
-    
     timer = al_create_timer(1.0 / FPS);
     window = al_create_display(window_width, window_hight);
     event_queue = al_create_event_queue();
@@ -40,7 +39,11 @@ Scene_Menager::Scene_Menager()
     last_core = new LastScore();
     
     current_scene = menu;
-    al_play_sample(sample, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_LOOP, NULL);
+    
+    if(Scene== false)
+        al_play_sample(sample, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_LOOP, NULL);
+    else
+        al_stop_samples();
     
     game->SetTimer(timer);
     game->SetWindow(window);
@@ -67,7 +70,6 @@ void Scene_Menager::Start()
 {
     while (running)
     {
-        
         current_scene->GetInput();
         current_scene->Update();
         current_scene->Draw();

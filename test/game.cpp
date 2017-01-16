@@ -102,8 +102,6 @@ void Game::Reset()
     superman_pointer->V = 0;
     score_pointer->last_score = score_pointer->score_int/3;
     score_pointer->score_int = 0;
-    
-    
 }
 
 int Game::GetScore()
