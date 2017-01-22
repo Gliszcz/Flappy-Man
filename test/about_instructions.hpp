@@ -1,13 +1,14 @@
 //
-//  last_score.hpp
+//  about_instructions.hpp
 //  Flappy Man
 //
-//  Created by Adam Gliszczński on 08.01.2017.
+//  Created by Adam Gliszczński on 22.01.2017.
 //  Copyright © 2017 Adam Gliszczński. All rights reserved.
 //
 
-#ifndef last_score_hpp
-#define last_score_hpp
+#ifndef about_instructions_hpp
+#define about_instructions_hpp
+
 #include <stdio.h>
 #include "scene.h"
 #include <allegro5/allegro.h>
@@ -20,7 +21,7 @@
 #include "Scene_menager.h"
 #include "game.hpp"
 
-struct LastScore : Scene
+struct About : Scene
 {
     Arrow_Pointer *arrow = nullptr;
     ALLEGRO_FONT *font = nullptr;
@@ -35,15 +36,14 @@ struct LastScore : Scene
     ALLEGRO_EVENT ev;
     bool back = false;
     
-    LastScore()
+    About()
     {
         font = al_load_ttf_font("Pixeled.ttf", 60, 0);
         font_small = al_load_ttf_font("Pixeled.ttf", 40, 0);
         arrow_pointer = al_load_bitmap("arrow_pointer.png");
         superman = al_load_bitmap("superman.png");
-        background = al_load_bitmap("background.jpg");
+        background = al_load_bitmap("about.png");
         ground = al_load_bitmap("ground.jpg");
-        table = al_load_bitmap("table.png");
         obstacle_up = al_load_bitmap("obstacle_up.png");
         obstacle_down = al_load_bitmap("obstacle_down.png");
         arrow =  new Arrow_Pointer(arrow_pointer,NULL,60,105,&ev,nullptr);
@@ -52,4 +52,5 @@ struct LastScore : Scene
     void Update();                                                      // Updating Last 5 Score Status
     void Draw();                                                        // Drawing Last 5 Score
 };
-#endif /* credits_hpp */
+
+#endif /* about_instructions_hpp */

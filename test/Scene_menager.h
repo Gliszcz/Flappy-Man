@@ -19,7 +19,7 @@ struct Scene_Menager
     Scene *menu = nullptr;
     Scene *credits = nullptr;
     Scene *current_scene;
-    Scene *last_core = nullptr;
+    Scene *about = nullptr;
     ALLEGRO_SAMPLE *sample = nullptr;
     ALLEGRO_DISPLAY *window = nullptr;
     ALLEGRO_EVENT_QUEUE *event_queue = nullptr;
@@ -30,7 +30,7 @@ struct Scene_Menager
     const int window_hight = 1080;
     enum class state
     {
-        Menu,Game,Credits,LastScore
+        Menu,Game,Credits,About
     };
     Scene_Menager();                                    // Starting Scene Menager
     void Start();                                       // Starting Current Scene (game/menu/credits/lastscore)

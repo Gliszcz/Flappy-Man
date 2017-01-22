@@ -53,5 +53,6 @@ struct Menu : Scene
     void GetInput();                                                        // Getting Input
     void Update();                                                          // Updating Menu Status
     void Draw();                                                            // Drawing Menu
+    void Mute();
 };
 #endif /* menu_h */

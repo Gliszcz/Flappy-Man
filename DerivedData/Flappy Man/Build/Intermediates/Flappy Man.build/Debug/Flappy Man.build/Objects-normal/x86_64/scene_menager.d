@@ -57,4 +57,4 @@ dependencies: /Users/Gliszcz/GitHub/Flappy-Man/test/scene_menager.cpp \
   /Users/Gliszcz/GitHub/Flappy-Man/test/game_object.h \
   /Users/Gliszcz/GitHub/Flappy-Man/test/menu.h \
   /Users/Gliszcz/GitHub/Flappy-Man/test/credits.hpp \
-  /Users/Gliszcz/GitHub/Flappy-Man/test/last_score.hpp
+  /Users/Gliszcz/GitHub/Flappy-Man/test/about_instructions.hpp

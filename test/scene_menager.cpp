@@ -10,7 +10,7 @@
 #include "game.hpp"
 #include "menu.h"
 #include "credits.hpp"
-#include "last_score.hpp"
+#include "about_instructions.hpp"
 #include <allegro5/allegro_acodec.h>
 #include <allegro5/allegro_audio.h>
 
@@ -32,18 +32,14 @@ Scene_Menager::Scene_Menager()
     al_register_event_source(event_queue, al_get_display_event_source(window));
     al_start_timer(timer);
     sample = al_load_sample("FlipFlap.wav");
+    al_play_sample(sample, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_LOOP, nullptr);
 
     game = new Game();
     menu  = new Menu();
     credits = new Credits();
-    last_core = new LastScore();
+    about = new About();
     
     current_scene = menu;
-    
-    if(Scene== false)
-        al_play_sample(sample, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_LOOP, NULL);
-    else
-        al_stop_samples();
     
     game->SetTimer(timer);
     game->SetWindow(window);
@@ -60,10 +56,10 @@ Scene_Menager::Scene_Menager()
     credits->SetEventQueue(event_queue);
     credits->SetSceneMenager(this);
     
-    last_core->SetTimer(timer);
-    last_core->SetWindow(window);
-    last_core->SetEventQueue(event_queue);
-    last_core->SetSceneMenager(this);
+    about->SetTimer(timer);
+    about->SetWindow(window);
+    about->SetEventQueue(event_queue);
+    about->SetSceneMenager(this);
 }
 
 void Scene_Menager::Start()
@@ -84,8 +80,8 @@ void Scene_Menager::ChangeScene(state s)
         current_scene = game;
     else if(s == state::Credits)
         current_scene = credits;
-    else if (s == state::LastScore)
-        current_scene = last_core;
+    else if (s == state::About)
+        current_scene = about;
 }
 
 Scene_Menager::~Scene_Menager()
@@ -95,4 +91,5 @@ Scene_Menager::~Scene_Menager()
     delete game;
     delete menu;
     delete credits;
+    delete about;
 }
