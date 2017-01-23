@@ -77,9 +77,7 @@ void Scene_Menager::MusicMenager(music m)
         al_play_sample(sample, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_LOOP, nullptr);
     else if(m == music::Mute)
         al_stop_samples();
-
 }
-
 
 void Scene_Menager::ChangeScene(state s)
 {

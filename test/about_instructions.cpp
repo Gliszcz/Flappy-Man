@@ -18,10 +18,10 @@ void About::Update()
     if(ev.type == ALLEGRO_EVENT_KEY_DOWN)
         switch(ev.keyboard.keycode)
         case ALLEGRO_KEY_ENTER:
-    {
-        scene_menager->ChangeScene(Scene_Menager::state::Menu);
-        back = true;
-    }
+        {
+            scene_menager->ChangeScene(Scene_Menager::state::Menu);
+            back = true;
+        }
 }
 
 void About::Draw()

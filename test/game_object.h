@@ -206,6 +206,7 @@ struct Obstacle : Game_Object
         sample = samp;
     }
 };
+
 struct Arrow_Pointer :Game_Object
 {
     int choice = 0;
