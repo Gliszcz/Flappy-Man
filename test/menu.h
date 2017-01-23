@@ -35,7 +35,7 @@ struct Menu : Scene
     ALLEGRO_BITMAP *sound_ON = nullptr;
     ALLEGRO_BITMAP *sound_OFF = nullptr;
     bool game_over = false;
-    bool mute;
+    bool mute = false;
 
     Menu()
     {

@@ -50,9 +50,15 @@ void Menu::Update()
         case ALLEGRO_KEY_M:
         {
             if(mute== false)
+            {
                 scene_menager->MusicMenager(Scene_Menager::music::Mute);
+                mute = true;
+            }
             else
+            {
                 scene_menager->MusicMenager(Scene_Menager::music::Play);
+                mute = false;
+            }
         }
     }
         arrow->Update_Object(ev);
