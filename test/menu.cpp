@@ -60,6 +60,7 @@ void Menu::Update()
                 mute = false;
             }
         }
+            break;
     }
         arrow->Update_Object(ev);
 }
@@ -74,7 +75,7 @@ void Menu::Draw()
         al_draw_bitmap(obstacle_up,1600,-800,0);
         al_draw_bitmap(obstacle_down,1600,600,0);
         al_draw_bitmap(superman, 80, 400, 0);
-        al_draw_text(font_small,al_map_rgb(255,51,51),40, 40, 0,"press M to mute or unmute");
+        al_draw_text(font_very_small,al_map_rgb(255,51,51),40, 40, 0,"press M to mute or unmute");
         al_draw_text(font, al_map_rgb(255, 51, 51), 660, 80, 0, "GAME OVER !");
         al_draw_text(font_small, al_map_rgb(255, 51, 51), 660, 230, 0, "NEW GAME");
         al_draw_textf(font_small, al_map_rgb(0, 0, 0), 1185, 400, 0, "YOUR SCORE : %d",score);

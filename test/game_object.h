@@ -127,7 +127,7 @@ struct Superman : Game_Object
                case ALLEGRO_KEY_SPACE:
                 {
                     V=-16;
-                    al_play_sample(jump_sample, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
+                    al_play_sample(jump_sample, 0.5, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
                 }
             }
         if((y >= 1048 - al_get_bitmap_height(image1)) && (y<=1040))

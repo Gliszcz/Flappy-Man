@@ -23,6 +23,7 @@ Scene_Menager::Scene_Menager()
     al_init_ttf_addon();
     al_init_acodec_addon();
     al_install_audio();
+    sample = al_load_sample("FlipFlap.wav");
     al_reserve_samples(1);
     timer = al_create_timer(1.0 / FPS);
     window = al_create_display(window_width, window_hight);
@@ -36,7 +37,7 @@ Scene_Menager::Scene_Menager()
     menu  = new Menu();
     credits = new Credits();
     about = new About();
-    
+
     current_scene = menu;
 
     game->SetTimer(timer);
@@ -70,6 +71,16 @@ void Scene_Menager::Start()
     }
 }
 
+void Scene_Menager::MusicMenager(music m)
+{
+    if(m == music::Play)
+        al_play_sample(sample, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_LOOP, nullptr);
+    else if(m == music::Mute)
+        al_stop_samples();
+
+}
+
+
 void Scene_Menager::ChangeScene(state s)
 {
     if(s == state::Menu)
@@ -80,13 +91,6 @@ void Scene_Menager::ChangeScene(state s)
         current_scene = credits;
     else if (s == state::About)
         current_scene = about;
-}
-void Scene_Menager::MusicMenager(music m)
-{
-    if(m == music::Play )
-        al_play_sample(sample, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_LOOP, nullptr);
-    else if(m == music::Mute)
-        al_stop_samples();
 }
 
 Scene_Menager::~Scene_Menager()
