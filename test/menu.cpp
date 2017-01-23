@@ -47,6 +47,7 @@ void Menu::Update()
                 }
             }
         }
+        break;
         case ALLEGRO_KEY_M:
         {
             if(mute== false)
@@ -75,6 +76,7 @@ void Menu::Draw()
         al_draw_bitmap(obstacle_up,1600,-800,0);
         al_draw_bitmap(obstacle_down,1600,600,0);
         al_draw_bitmap(superman, 80, 400, 0);
+        al_draw_text(font_very_small, al_map_rgb(255, 51, 51), 40, 0, 0, "Double press M to start music");
         al_draw_text(font_very_small,al_map_rgb(255,51,51),40, 40, 0,"press M to mute or unmute");
         al_draw_text(font, al_map_rgb(255, 51, 51), 660, 80, 0, "GAME OVER !");
         al_draw_text(font_small, al_map_rgb(255, 51, 51), 660, 230, 0, "NEW GAME");

@@ -39,7 +39,7 @@ Scene_Menager::Scene_Menager()
     about = new About();
 
     current_scene = menu;
-
+    
     game->SetTimer(timer);
     game->SetWindow(window);
     game->SetEventQueue(event_queue);
