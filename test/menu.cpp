@@ -49,10 +49,10 @@ void Menu::Update()
         }
         case ALLEGRO_KEY_M:
         {
-        if(mute== false)
-            mute = true;
-        else
-            mute = false;
+            if(mute== false)
+                scene_menager->MusicMenager(Scene_Menager::music::Mute);
+            else
+                scene_menager->MusicMenager(Scene_Menager::music::Play);
         }
     }
         arrow->Update_Object(ev);
@@ -68,12 +68,7 @@ void Menu::Draw()
         al_draw_bitmap(obstacle_up,1600,-800,0);
         al_draw_bitmap(obstacle_down,1600,600,0);
         al_draw_bitmap(superman, 80, 400, 0);
-        
-        if (mute == false)
-            al_draw_bitmap(sound_ON, 40, 40, 0);
-        else
-            al_draw_bitmap(sound_OFF, 40, 40, 0);
-        
+        al_draw_text(font_small,al_map_rgb(255,51,51),40, 40, 0,"press M to mute or unmute");
         al_draw_text(font, al_map_rgb(255, 51, 51), 660, 80, 0, "GAME OVER !");
         al_draw_text(font_small, al_map_rgb(255, 51, 51), 660, 230, 0, "NEW GAME");
         al_draw_textf(font_small, al_map_rgb(0, 0, 0), 1185, 400, 0, "YOUR SCORE : %d",score);
@@ -89,12 +84,7 @@ void Menu::Draw()
         al_draw_bitmap(obstacle_up,1600,-800,0);
         al_draw_bitmap(obstacle_down,1600,600,0);
         al_draw_bitmap(superman, 80, 400, 0);
-        
-        if (mute == false)
-            al_draw_bitmap(sound_ON, 40, 40, 0);
-        else
-            al_draw_bitmap(sound_OFF, 40, 40, 0);
-        
+        al_draw_text(font_very_small,al_map_rgb(255,51,51),40, 40, 0,"press M to mute or unmute");
         al_draw_text(font, al_map_rgb(255, 51, 51), 660, 80, 0, "FLAPPY MAN");
         al_draw_text(font_small, al_map_rgb(255, 51, 51), 660, 230, 0, "NEW GAME");
         al_draw_text(font_small, al_map_rgb(255, 51, 51), 660, 430, 0, "ABOUT");
@@ -104,7 +94,4 @@ void Menu::Draw()
     }
     al_flip_display();
 }
-void Menu::Mute()
-{
-    
-}
+

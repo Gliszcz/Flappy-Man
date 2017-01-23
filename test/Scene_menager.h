@@ -28,6 +28,10 @@ struct Scene_Menager
     const int FPS = 60;
     const int window_width = 1920;
     const int window_hight = 1080;
+    enum class music
+    {
+        Mute,Play
+    };
     enum class state
     {
         Menu,Game,Credits,About
@@ -35,6 +39,7 @@ struct Scene_Menager
     Scene_Menager();                                    // Starting Scene Menager
     void Start();                                       // Starting Current Scene (game/menu/credits/lastscore)
     void ChangeScene(state s);                          // Changing Scene
+    void MusicMenager(music m);
     ~Scene_Menager();                                   // Freeing Space After Scene Menager
 };
 #endif /* Scene_menager_h */

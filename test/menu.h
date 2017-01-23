@@ -24,6 +24,7 @@ struct Menu : Scene
     Arrow_Pointer *arrow = nullptr;
     ALLEGRO_FONT *font = nullptr;
     ALLEGRO_FONT *font_small = nullptr;
+    ALLEGRO_FONT *font_very_small = nullptr;
     ALLEGRO_BITMAP *arrow_pointer = nullptr;
     ALLEGRO_BITMAP *superman = nullptr;
     ALLEGRO_BITMAP *obstacle_up = nullptr;
@@ -33,13 +34,14 @@ struct Menu : Scene
     ALLEGRO_EVENT ev;
     ALLEGRO_BITMAP *sound_ON = nullptr;
     ALLEGRO_BITMAP *sound_OFF = nullptr;
-    bool mute = false;
     bool game_over = false;
+    bool mute;
 
     Menu()
     {
         font = al_load_ttf_font("Pixeled.ttf", 60, 0);
         font_small = al_load_ttf_font("Pixeled.ttf", 40, 0);
+        font_very_small = al_load_font("Pixeled.ttf", 20, 0);
         arrow_pointer = al_load_bitmap("arrow_pointer.png");
         superman = al_load_bitmap("superman.png");
         obstacle_up =al_load_bitmap("obstacle_up.png");
@@ -53,6 +55,5 @@ struct Menu : Scene
     void GetInput();                                                        // Getting Input
     void Update();                                                          // Updating Menu Status
     void Draw();                                                            // Drawing Menu
-    void Mute();
 };
 #endif /* menu_h */
